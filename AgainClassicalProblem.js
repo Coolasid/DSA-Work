@@ -19,6 +19,7 @@ function classicPrb(arr){
     } else{
         console.log("not balanced");
     }
+    
 }
 
 
