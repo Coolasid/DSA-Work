@@ -1,25 +1,42 @@
+function isOpen(a){
+  if( a == '(' || a == '{' || a == '['){
+    return true;
+  } else{
+    return false;
+  }
+}
+
+
 function classicPrb(arr){
-    // console.log(arr);
-    var count = 0;
-    var right = arr.length-1;
-    var left = 0;
-    
-    while(left < right){
-        if(arr[left] == arr[right]){
-            count++;
+  var stack = [];
+  var top = stack.length-1;
+   for( var i = 0; i < arr.length; i++){
+     if( isOpen(arr[i])){
+       stack.push(arr[i]);
+       top++;
+     }
+      else{
+
+        if( stack.length == 0){
+          return false;
         }
+       if (stack[top] == '(' && arr[i] == ')' || stack[top] == '[' && arr[i] == ']' || stack[top] == '{' && arr[i] == '}' ){
+         stack.pop();
+         top--;
+       } else{
+         return false;
+       }
+      }
+   }
 
-        left++;
-        right--;
-    }
-    // console.log(count);
-    if(count == Math.floor(arr.length/2)){
-        console.log("balanced");
+   if( stack.length == 0){
+     return true;
 
-    } else{
-        console.log("not balanced");
-    }
+   } else{
+     return false;
+   }
     
+  
 }
 
 
@@ -34,7 +51,11 @@ function runProgram(input) {
        var arr = input[line].trim().split("");
        line++;
 
-        classicPrb(arr);
+        if (classicPrb(arr)){
+          console.log("balanced")
+        } else {
+          console.log("not balanced")
+        }
    }
    
   }
