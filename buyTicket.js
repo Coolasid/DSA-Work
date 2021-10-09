@@ -1,5 +1,23 @@
 function buyTicket(arr1, arr2){
-    console.log(arr1, arr2);
+    // console.log(arr1, arr2);
+
+    var queue = [];
+    var front = 0;
+
+    for( var i = 0; i < arr1.length; i++){
+
+        if( arr1[i] == "E"){
+            queue.push(arr2[i]);
+            console.log(queue.length)
+        }
+        if( arr1[i] == "D"){
+            if( queue.length > 0){
+                console.log( queue[front] + " " + (queue.length-1));
+            }else(
+                console.log("-1" + " " + ( queue.length-1))
+            )
+        }
+    }
 }
 
 
