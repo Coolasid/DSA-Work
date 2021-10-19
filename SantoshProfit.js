@@ -1,30 +1,33 @@
-function raisTO (a, b){
-  var sum = 1;
-  for(var i = 1; i <= b; i++){
-    sum = a**i;
-  }
-  return sum;
-}
-
-
-function GPRecu(n, r, ans){
-    if(n == 0){
-      return 1;
+function santProf(N){
+    if( N < 0){
+        return 0;
     }
-    var val = raisTO(r, n)
-    var ans = (1/val + GPRecu(n-1, r, ans));
-    return ans;
+    if( N == 0){
+        return 1;
+    }
+
+    return santProf(N-4)+santProf(N-8);
 }
 
 
 function runProgram(input) {
-   var [n,r] = input.trim().split(" ").map(Number);
-    var ans = 0;
-    console.log(Number.parseFloat(GPRecu(n, r, ans)).toFixed(4));
+   var input = input.trim().split("\n");
+
+   var testCase = +input[0].trim();
+
+   var line = 1;
+
+   for( var i = 0; i < testCase; i++){
+       var N = +input[line].trim();
+       line++;
+
+       console.log(santProf(N));
+   }
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`3 5`);
+      runProgram(`1
+12`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
