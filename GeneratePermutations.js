@@ -1,7 +1,28 @@
+function gPremu(arr,cur){
+    // console.log(arr);
+
+    if( cur == arr.length){
+        console.log(arr);
+        return;
+    }
+
+    for( i = cur; i< arr.length; i++){
+        var flag = i;
+        i = cur;
+        cur = flag;
+        gPremu(arr,cur+1);
+        var temp = i;
+        i = cur;
+        cur = temp;
+    }
+}
+
+
 function runProgram(input) {
    var input = input.trim().split("\n");
-   var arr
-   
+   var arr = input[1].trim().split(" ").map(Number);
+   var cur = 0;
+        gPremu(arr,cur);
   }
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`3
