@@ -1,12 +1,28 @@
+
 function runProgram(input) {
    var input = input.trim().split("\n");
    var arr1 = input[0].trim().split(" ").map(Number);
     var arr = input[1].trim().split(" ").map(Number);
+  let count = 0;
+    var K = +arr1[0];
+    var N = +arr1[1];
+ 
+        masaiways(arr, N , K , 0);
+  console.log(count);
+        function masaiways(arr, N, way){
+          if(K<way){
+            return;
+          }
+          if(K == way){
+            count++;
+            return;
+          }
 
-    var K = arr1[0];
-    var N = arr1[1];
-
-        masaiways(K,N,arr);
+          for( let i = 0; i < N; i++){
+            masaiways(arr,N,way+arr[i]);
+          }
+        }
+        
    
   }
   if (process.env.USERNAME === "siddhesh") {
