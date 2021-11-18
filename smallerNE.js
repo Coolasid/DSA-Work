@@ -3,8 +3,18 @@ function smallerNE(N, arr){
    var ans = [];
 
    for( var i = 0; i < N; i++){
-       while( stack.length > 0 && stack.peek )
+       if( stack.length > 0 && stack[stack.length-1] >= arr[i] ){
+         stack.pop();
+       }
+       if(stack.length == 0){
+         ans[i] = -1;
+      } else{
+        ans[i] = stack[stack.length-1]
+      }
+      stack.push(arr[i])
+
    }
+   return ans;
 }
 
 
@@ -14,12 +24,12 @@ function runProgram(input) {
    var N = +input[0];
    var arr = input[1].split(" ").map(Number);
 
-   smallerNE(N, arr);
+  console.log( smallerNE(N, arr));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`8
-39 27 11 4 24 32 32 1`);
+      runProgram(`4
+1 3 2 4`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

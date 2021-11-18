@@ -1,26 +1,24 @@
 function nextGE(N, arr){
     var stack = [];
     var ans = [];
-    var last = stack.length-1;
+    
 
     for( var i = N-1; i >= 0; i--){
-        while( stack.length && arr[i] >= stack[last]){
+        while( stack.length > 0 && arr[i] >= stack[stack.length - 1]){
             stack.pop();
-            last--;
-        } if( stack.length){
-            ans.push(stack[last])
+            
+        } if( stack.length == 0){
+           ans[i] = -1;
         } else{
-            ans.push(-1);
+            ans[i] = stack[stack.length-1]
         }
-        top++;
-        stack[top] = arr[i]
-    }
-    var out = "";
-    for( var i = ans.length-1; i>= 0; i--){
-        out = out + ans[i] + " ";
+        
+        stack.push(arr[i])
 
     }
-    console.log(out);
+
+    
+    console.log(ans.join(" "));
     
 }
 
@@ -40,6 +38,7 @@ function runProgram(input) {
     
    
   }
+}
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`1
 4
