@@ -1,20 +1,15 @@
 function uniqueGift(arr){
   // console.log(arr);
 
-  var stack = [];
+  var unique = [];
   var ans = [];
-
+  var front = 0;
+  var rear = 0;
   for (var i = 0; i < arr.length; i++) {
-    
-    while(stack.length>0 && stack[stack.length-1] == arr[i]){
-      ans[i] = "#";
-      stack.pop();
-    }
-    if(stack.length == 0){
-      ans[i] = arr[i];
-    }else{
-      
-    }
+    unique.push(arr[i]);
+
+    if(arr[i] == ans[i])
+   
    
 
   }
