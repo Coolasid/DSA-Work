@@ -1,69 +1,88 @@
 function masaiCodingC(arr1, arr2, arr3){
     // console.log(arr1, arr2, arr3)
+    var master = [];
+    var q1 = [];
+    var q2 = [];
+    var q3 = [];
+    var q4 = [];
 
-    var club1 = [];
-    var club2 = [];
-    var club3 = [];
-    var club4 = [];
+    function notContain(arr,M){
+        var count= 0;
+        for(var i = 0; i < arr.length; i++){
+            if(arr[i] != M){
+                count++;
+            }
+        }
+        if(count == arr.length){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
+    // console.log(notContain([1,2,3],2));
+    
     for( var i = 0; i < arr1.length; i++){
         if(arr1[i] == "E"){
             if(arr2[i] == 1){
-                club1.push(arr2[i],arr3[i]);
-                // console.log(club1);
+               if((master.length == 0) || notContain(master,1) ){
+                   master.push(1)
+               }
+               q1.push(arr3[i]);
             }
-            if (arr2[i] == 2) {
-                club2.push(arr2[i], arr3[i]);
-                // console.log(club2);
+            else if (arr2[i] == 2) {
+                if ((master.length == 0) || notContain(master, 2)) {
+                    master.push(2)
+                }
+                q2.push(arr3[i]);
             }
-            if (arr2[i] == 3) {
-                club3.push(arr2[i], arr3[i]);
-                // console.log(club3);
+            else if (arr2[i] == 3) {
+                if ((master.length == 0) || notContain(master, 3)) {
+                    master.push(3)
+                }
+                q3.push(arr3[i]);
             }
-            if (arr2[i] == 4) {
-                club4.push(arr2[i], arr3[i]);
-                // console.log(club4);
+            else if (arr2[i] == 4) {
+                if ((master.length == 0) || notContain(master, 4)) {
+                    master.push(4)
+                }
+                q4.push(arr3[i]);
             }
-
+            
           
+        }else if(arr1[i] == "D"){
+            if(master[0] == 1){
+                console.log(1 + " " + q1[0]);
+            q1.shift();
+                if(q1.length == 0){
+                    master.shift();
+                }
+            }else if(master[0] == 2){
+                console.log(2 + " " + q2[0]);
+                q2.shift();
+                if (q2.length == 0) {
+                    master.shift();
+                }
+            } else if (master[0] == 3) {
+                console.log(3 + " " + q3[0]);
+                q3.shift();
+                if (q3.length == 0) {
+                    master.shift();
+                }
+            } else if (master[0] == 4) {
+                console.log(4 + " " + q4[0]);
+                q4.shift();
+                if (q4.length == 0) {
+                    master.shift();
+                }
+            }
+
         }
         
         
     }
-    var club1Str = "";
-    for(var i = 0; i < club1.length; i++){
-        club1Str += club1[i];
-    }
-    // console.log(club1Str);
-    var club2Str = "";
-    for (var i = 0; i < club2.length; i++) {
-        club2Str += club2[i];
-    }
-    var club3Str = "";
-    for (var i = 0; i < club3.length; i++) {
-        club3Str += club3[i];
-    }
-    var club4Str = "";
-    for (var i = 0; i < club4.length; i++) {
-        club4Str += club4[i];
-    }
-    // console.log(club1Str + club2Str + club3Str + club4Str)
-
-    var allClubs = club1Str + club2Str + club3Str + club4Str;
-    // console.log(allClubs)
-
-    allClubsArr = [];
-    for(var i = 0; i < allClubs.length; i++){
-        allClubsArr.push(allClubs[i])
-    }
-    // console.log(allClubsArr);
-    for(var i = 0; i < arr1.length; i++){
-        if(arr1[i] == "D"){
-            console.log(allClubsArr[0]+ " " + allClubsArr[1])
-            allClubsArr.shift();
-            allClubsArr.shift();
-        }
-    }
+    
+    // console.log(q1, q2, q3, q4, master);
 }
 
 function runProgram(input) {
@@ -89,9 +108,9 @@ function runProgram(input) {
   }
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`5
-E 1 1
+E 4 1
 E 2 1
-E 1 2
+E 4 2
 D
 D`);
   } else {
