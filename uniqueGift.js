@@ -1,19 +1,35 @@
 function uniqueGift(arr){
   // console.log(arr);
 
-  var unique = [];
-  var ans = [];
-  var front = 0;
-  var rear = 0;
-  for (var i = 0; i < arr.length; i++) {
-    unique.push(arr[i]);
+  var queue = [];
+  var obj = {}
+var ans = [];
 
-    if(arr[i] == ans[i])
-   
-   
+   for(var i = 0; i < arr.length; i++){
 
-  }
-  return ans;
+     if (obj[arr[i]] === undefined) {
+       obj[arr[i]] = 1;
+       queue.push(arr[i]);
+ 
+     } else {
+       obj[arr[i]]++;
+       
+     }
+      for (key in obj) {
+       if (key.value == 1) {
+         ans.push(queue[0])
+       } else {
+         queue.shift();
+       }
+     }
+    
+     
+   }
+  
+   console.log(ans)
+  
+
+  
 }
 
 function runProgram(input) {
@@ -22,12 +38,13 @@ function runProgram(input) {
   var line = 1;
 
    for( var i = 0; i < testCases; i++){
-    var arr = input[line].trim().split("");
+    var arr = input[line].trim();
 
     line++;
      
+    uniqueGift(arr);
    }
-  console.log(uniqueGift(arr));
+ 
     
    
   }

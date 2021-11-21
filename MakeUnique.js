@@ -12,7 +12,7 @@ function makeUniq(str){
         
     }
 
-    // console.log(obj);
+    console.log(obj);
     var out = "";
     for( key in obj){
         if(key != " "){
