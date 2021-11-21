@@ -19,7 +19,7 @@ function nextGE(N, arr){
 
     
     console.log(ans.join(" "));
-    
+   
 }
 
 function runProgram(input) {
