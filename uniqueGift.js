@@ -4,7 +4,7 @@ function uniqueGift(arr) {
   var queue = [];
   var obj = {}
   let name = "abcdefghijklmnopoqrstuvwxyz";
-  var ans = [];
+  
 
   var str = "";
 
