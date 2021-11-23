@@ -5,21 +5,29 @@ function redString(str) {
 
     for(var i = 0; i < str.length; i++){
 
-        while (stack.length > 0 && str[i] == stack[stack.length - 1]) {
-            stack.pop();
+       if(stack.length == 0){
+           stack.push(str[i]);
+       }else{
+           if(str[i] == stack[stack.length - 1]){
+               stack.pop();
+           }else{
+               stack.push(str[i]);
+               ans.push(stack[stack.length-1]);
+           }
+       }
 
-        } if (stack.length == 0) {
-            ans[i] = -1;
-        } else {
-            ans[i] = stack[stack.length - 1]
-        }
-
-        stack.push(str[i])
+       
+        
+        
 
     }
 
-
-    console.log(ans.join(" "));
+    if(stack.length !=0 ){
+        console.log(stack.join(""));
+    }else{
+        console.log("Empty String");
+    }
+   
     }
 
     
