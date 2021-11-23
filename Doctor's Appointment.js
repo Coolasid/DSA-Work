@@ -13,7 +13,7 @@ function doctorApp(N, arr1, arr2){
         if (arr2[0] == arr1[0]) {
             arr1.shift()
             arr2.shift()
-            
+            count++;
         }
         if (arr2.length == 0) {
             break;
