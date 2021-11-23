@@ -2,23 +2,42 @@ function pairLessK(N, K, arr){
     
     arr.sort();
     var first = 0;
-    var second = 0;
+    var second = N-1;
     var count = 0;
-   
-    while(first< N && second< N && first >= 0 && second >= 0){
+    var arr1 = [];
+
+    while(first< N && second>= 0 ){
         var sum = arr[first] + arr[second];
-        if( sum < K){
-            count++;
-            first++;
-            second++;
-        }else if( sum > K){
-            first--;
-        } else if( sum == K){
+        if( sum == K){
+            
             first++;
             second--;
+            arr1.push(sum);
+        }else if(sum < K){
+          first++;
+          
+          arr1.push(sum);
+          break;
+        }else if(sum > K){
+          second--;
+          arr1.push(sum);
         }
     }
-   console.log(count );
+  //  console.log(arr1);
+
+  for(var i = 0; i < arr1.length; i++){
+    if(arr1[i] < K){
+      console.log(arr1[i])
+      break;
+    }else{
+      count++;
+    }
+  }
+
+  if(count>0){
+    console.log("-1");
+  }
+  
 }
 
 

@@ -10,7 +10,7 @@ function NGElement(N, arr){
     var rightStack = [];
     var leftAns = [];
     var rightAns = [];
-    var leftIndex = [];
+    
 
   for (var i = 0; i < N; i++) {
     while (leftStack.length > 0 && arr[i] >= leftStack[leftStack.length - 1]) {
