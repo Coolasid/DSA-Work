@@ -1,43 +1,31 @@
 function pairLessK(N, K, arr){
-    
-    arr.sort();
-    var first = 0;
-    var second = N-1;
-    var count = 0;
-    var arr1 = [];
-
-    while(first< N && second>= 0 ){
-        var sum = arr[first] + arr[second];
-        if( sum == K){
-            
-            first++;
-            second--;
-            arr1.push(sum);
-        }else if(sum < K){
-          first++;
-          
-          arr1.push(sum);
-          break;
-        }else if(sum > K){
-          second--;
-          arr1.push(sum);
-        }
-    }
-  //  console.log(arr1);
-
-  for(var i = 0; i < arr1.length; i++){
-    if(arr1[i] < K){
-      console.log(arr1[i])
-      break;
-    }else{
-      count++;
-    }
-  }
-
-  if(count>0){
-    console.log("-1");
-  }
   
+  var arr1 = [];
+ 
+
+  for (var i = 0; i < N; i++) {
+    for (var j = i + 1; j < N; j++) {
+      if (arr[i] + arr[j] < K) {
+        arr1.push(arr[i] + arr[j])
+      }
+    }
+  }
+  // console.log(arr1);
+
+
+   if(arr1.length > 0 ){
+     var M = 0;
+     for (var i = 0; i < arr1.length; i++) {
+       if(arr1[i] > M){
+         M = arr1[i];
+       }
+    }
+    console.log(M);
+   }else{
+     console.log("-1");
+   }
+ 
+
 }
 
 
@@ -61,8 +49,8 @@ function runProgram(input) {
   }
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`2
-5
-1 2 3 4 5
+6
+1 7 6 4 8 4
 7
 3
 30 10 20

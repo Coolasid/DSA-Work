@@ -20,15 +20,15 @@ function nextSE(N, arr) {
 
     console.log(ans.join(" "));
 
-    //count the no of element whose NSE is not present=>
-var count = 0;
-    for(var i = 0; i < ans.length; i++){
-        if(ans[i] == "-1"){
-            count++;
-        }
-    }
+//     //count the no of element whose NSE is not present=>
+// var count = 0;
+//     for(var i = 0; i < ans.length; i++){
+//         if(ans[i] == "-1"){
+//             count++;
+//         }
+//     }
 
-    console.log(count);
+//     console.log(count);
 
 }
 
@@ -51,8 +51,8 @@ function runProgram(input) {
 }
 if (process.env.USERNAME === "siddhesh") {
     runProgram(`1
-5
-4 2 1 3 7`);
+8
+39 27 11 4 24 32 32 1`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
