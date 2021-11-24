@@ -10,39 +10,58 @@ function NGElement(N, arr){
     var rightStack = [];
     var leftAns = [];
     var rightAns = [];
-    
+    var leftIS = [];
+    var rightIS = [];
 
-  for (var i = 0; i < N; i++) {
+  for (let i = 0; i < N; i++) {
     while (leftStack.length > 0 && arr[i] >= leftStack[leftStack.length - 1]) {
       leftStack.pop();
 
     } if (leftStack.length == 0) {
       leftAns[i] = -1;
+      leftIS[i] = -1;
     } else {
       leftAns[i] = leftStack[leftStack.length - 1]
+      leftIS[i] = i-1;
     }
 
     leftStack.push(arr[i])
 
   }
   console.log(leftAns);
+  console.log(leftIS);
 
 
 
-  for (var i = N-1; i >= 0; i--) {
+  for (let i = N-1; i >= 0; i--) {
     while (rightStack.length > 0 && arr[i] >= rightStack[rightStack.length - 1]) {
       rightStack.pop();
 
     } if (rightStack.length == 0) {
       rightAns[i] = -1;
+      rightIS[i] = -1;
     } else {
       rightAns[i] = rightStack[rightStack.length - 1]
+      rightIS[i] = i; 
     }
 
     rightStack.push(arr[i])
 
   }
   console.log(rightAns);
+  // console.log(rightIS);
+
+   for(var i = 0; i < arr.length; i++){
+    for(var j = 0; j < rightAns.length; j++){
+      if (rightAns[j] == arr[i] ){
+        rightIS.push(i);
+       }
+      else if(rightAns[j] === -1){
+        rightIS.push("-1");
+      }
+    }
+  }
+  console.log(rightIS);
 }
 
 
@@ -57,8 +76,8 @@ function runProgram(input) {
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`8
-39 27 11 4 24 32 32 1`);
+      runProgram(`7
+6 5 7 8 4 3 9`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
