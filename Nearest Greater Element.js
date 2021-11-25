@@ -5,63 +5,92 @@ function NGElement(N, arr){
 
     // console.log(N, arr);
 
-    var count = 0;
+    
     var leftStack = [];
     var rightStack = [];
     var leftAns = [];
     var rightAns = [];
-    var leftIS = [];
-    var rightIS = [];
+    
+   
 
   for (let i = 0; i < N; i++) {
-    while (leftStack.length > 0 && arr[i] >= leftStack[leftStack.length - 1]) {
+    while (leftStack.length > 0 && arr[i] >= arr[leftStack[leftStack.length - 1]]) {
       leftStack.pop();
 
     } if (leftStack.length == 0) {
-      leftAns[i] = -1;
-      leftIS[i] = -1;
+      leftAns.push(-1) ;
+      
     } else {
-      leftAns[i] = leftStack[leftStack.length - 1]
-      leftIS[i] = i-1;
+      leftAns.push( leftStack[leftStack.length - 1]);
+      
     }
 
-    leftStack.push(arr[i])
+    leftStack.push(i)
 
   }
-  console.log(leftAns);
-  console.log(leftIS);
+  // console.log( leftAns);
+  
 
 
 
-  for (let i = N-1; i >= 0; i--) {
-    while (rightStack.length > 0 && arr[i] >= rightStack[rightStack.length - 1]) {
+  var arr1 = arr.reverse()
+  // console.log(arr1)
+
+
+  for (let i = 0; i < N; i++) {
+    while (rightStack.length > 0 && arr1[i] >= arr[rightStack[rightStack.length - 1]]) {
       rightStack.pop();
 
     } if (rightStack.length == 0) {
-      rightAns[i] = -1;
-      rightIS[i] = -1;
+      rightAns.push(-1);
+     
     } else {
-      rightAns[i] = rightStack[rightStack.length - 1]
-      rightIS[i] = i; 
+      rightAns.push(rightStack[rightStack.length - 1]);
+      
     }
 
-    rightStack.push(arr[i])
+    rightStack.push(i)
 
   }
-  console.log(rightAns);
-  // console.log(rightIS);
+  // console.log(rightAns.reverse());
 
-   for(var i = 0; i < arr.length; i++){
-    for(var j = 0; j < rightAns.length; j++){
-      if (rightAns[j] == arr[i] ){
-        rightIS.push(i);
-       }
-      else if(rightAns[j] === -1){
-        rightIS.push("-1");
-      }
+  var revRightAns1 = rightAns.reverse();
+  var revRightAns = [];
+
+  for (var i = 0; i < revRightAns1.length; i++){
+    if(revRightAns1[i] != -1){
+          revRightAns.push((N-1)-revRightAns1[i]);
+    }else{
+      revRightAns.push(-1);
     }
   }
-  console.log(rightIS);
+
+  // console.log( revRightAns);
+
+  var finalAns = [];
+  arr.reverse();
+  for(var i = 0; i < N; i++){
+    if(leftAns[i] == -1 && revRightAns[i] == -1){
+      finalAns.push(-1);
+    }
+    else if( leftAns[i] == -1){
+      finalAns.push(arr[revRightAns[i]]);
+    }
+    else if( revRightAns[i] == -1){
+      finalAns.push(arr[leftAns[i]]);
+    }
+    else if( leftAns[i] < revRightAns[i]){
+      finalAns.push(arr[leftAns[i]]);
+    }
+    else if( revRightAns[i] < leftAns[i]){
+      finalAns.push(arr[revRightAns[i]]);
+    }
+    else if (leftAns[i] == revRightAns[i] ){
+      finalAns.push(arr[leftAns[i]]);
+    }
+  }
+
+  console.log(finalAns.join(' '));
 }
 
 
@@ -69,15 +98,26 @@ function NGElement(N, arr){
 function runProgram(input) {
    var input = input.trim().split("\n");
 
-   var N = +input[0];
-   var arr = input[1].trim().split(" ").map(Number);
+   var testCases = +input[0];
+   var line = 1;
+   for(var i = 0; i < testCases; i++){
+     var N = +input[line];
 
-   NGElement(N, arr);
+     line++;
+
+     var arr = input[line].trim().split(" ").map(Number);
+     line++;
+     NGElement(N, arr);
+   }
+  
+
+   
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`7
-6 5 7 8 4 3 9`);
+    runProgram(`1
+21
+5 2 84 23 52 6 28 3 82 6 7 5 6 22 77 63 33 7 6 95 24`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

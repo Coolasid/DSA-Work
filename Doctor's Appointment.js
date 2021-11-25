@@ -1,29 +1,34 @@
 function doctorApp(N, arr1, arr2){
     // console.log(arr1,arr2);
 
-    var queue = [];
+    
     var count = 0;
-
+    var M = 0;
+    var K = 0;
     for (var i = 0; i < Infinity; i++) {
-        if (arr2[0] != arr1[0]) {
-            queue.push(arr2[0])
-            arr2.shift();
-            count++;
-            
-        }
-        if (arr2[0] == arr1[0]) {
-            arr1.shift()
-            arr2.shift()
-            
-        }
-        if (arr2.length == 0) {
-            break;
-        }
 
+      if (arr1[M] != arr2[K]) {
+        
+        count++;
+        K++;
+      }
+      
+      if (arr1[M] == arr2[K]) {
+       
+        count++;
+        arr2.splice(K,1)
+        K = 0;
+        M++;
+      }
+      if (arr2.length == 0) {
+        break;
+      
+      }
 
+      
 
     }
-    console.log(count);
+    console.log(count-1);
 }
 
 function runProgram(input) {
