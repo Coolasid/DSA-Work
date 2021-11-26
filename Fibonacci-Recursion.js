@@ -1,21 +1,23 @@
-function fibo(N){
-      if( N == 0 || N == 1){
-          return N;
-      }
+function fibRec(N){
+    // console.log(N);
+    
+    if(N == 0 || N == 1){
+        return N;
+    }
 
-      return fibo(N-1) + fibo(N-2);
+    return fibRec(N-1) + fibRec(N-2); 
+
 }
 
 
 function runProgram(input) {
    var N = +input.trim();
-
-   console.log(fibo(N))
-
    
-  }
+   console.log(fibRec(N));
+   
+}
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`4`);
+      runProgram(`15`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

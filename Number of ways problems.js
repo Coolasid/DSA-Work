@@ -1,24 +1,22 @@
-function nWP(N){
-    // console.log(N);
+function NoWays(N){
+    // return N;
 
-    if(N < 0){
-        return 0; 
+    if( N < 0 ){
+        return 0;
     }
     if( N == 0){
         return 1;
     }
-    return nWP(N - 1) + nWP(N - 2) + nWP(N - 3) ;
 
+    return NoWays(N - 1) + NoWays(N - 2) + NoWays(N-3);
 }
 
 
 
-
 function runProgram(input) {
-   var N = +input.trim();
-    
-   console.log( nWP(N));
-   
+    var N = +input;
+
+    console.log(NoWays(N));
   }
   if (process.env.USERNAME === "siddhesh") {
     runProgram(`4`);
