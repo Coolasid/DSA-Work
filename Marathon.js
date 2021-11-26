@@ -1,5 +1,5 @@
-function marathon(arr1, arr2){
-    // console.log(arr1,arr2);
+function marathon(enengy, distance){
+    console.log(enengy,distance);
 var queue = [];
 
 
@@ -12,18 +12,18 @@ function runProgram(input) {
    var input = input.trim().split("\n");
    var testCases = +input[0];
    var line = 1;
-   var arr1 = [];
-   var arr2 = [];
+   var energy = [];
+   var distance = [];
 
    for(var i = 0; i < testCases; i++){
        var arr = input[line].trim().split(" ").map(Number);
 line++;
-       arr1.push(arr[0]);
-       arr2.push(arr[1]);
+       energy.push(arr[0]);
+       distance.push(arr[1]);
 
    }
 
-   marathon(arr1,arr2);
+   marathon(energy,distance);
    
   }
   if (process.env.USERNAME === "siddhesh") {
