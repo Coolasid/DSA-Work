@@ -1,5 +1,7 @@
-function knight(i, j, N){
+
+function knight(i, j, N,M){
     // console.log(i,j,N);
+    
 
      var count = 0;
 
@@ -123,6 +125,26 @@ function knight(i, j, N){
      
 
      return count;
+
+     
+
+//      if(i < 0 || j < 0 || i > 9 || j > 9){
+//          return;
+//      }
+     
+//      if(N <= M){
+//         count--;
+//      }
+
+//      knight(i-2,j+1,N-1,M);
+//     knight(i - 2, j - 1, N - 1, M);
+//     knight(i + 2, j + 1, N - 1, M);
+//     knight(i + 2, j - 1, N - 1, M);
+//     knight(i - 1, j - 2, N - 1, M);
+//     knight(i + 1, j - 2, N - 1, M);
+//     knight(i - 1, j + 2, N - 1, M);
+//     knight(i + 1, j + 2, N - 1, M);
+//    return count++;
 }
  
  
@@ -132,8 +154,8 @@ function knight(i, j, N){
     var i = arr[0];
     var j = arr[1];
     var N = arr[2];
-
-    console.log(knight(i,j,N));
+    var M = N-1;
+    console.log(knight(i,j,N,M));
 
    }
    if (process.env.USERNAME === "siddhesh") {
