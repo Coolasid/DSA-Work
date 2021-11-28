@@ -1,19 +1,39 @@
+var ans = 0;
 
-  function factorial(n) {
-    if (n == 0 || n == 1) return 1
-    return n * factorial(n - 1)
-  }
+function factorial(e) {
+    if (e == 0 || e == 1){
+        return 1;
+    }
+     
+    return e * factorial(e - 1);
+}
+// console.log(factorial(5))
 
+function eToX(x, n, m, s){
 
+    if(m > n){
+        return ans.toFixed(4);
+    }
+
+ans = ans + ((x**(s))/factorial(m));
+
+return eToX(x,n,m+1,s+1);
+}
 
 
 function runProgram(input) {
-    var n = +input;
+   var input = input.trim().split(" ");
 
-  console.log(factorial(n));
+   var x = +input[0];
+   var n = +input[1];
+   var m = 0;
+   var s = 0;
+
+   console.log(eToX(x,n,m,s))
+   
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`6`);
+      runProgram(`4 2`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
@@ -32,11 +52,3 @@ function runProgram(input) {
       process.exit(0) ;
     });
   }
-
-
-// function checkPalindrome(str, left, right) {
-//   if (left == right) return true
-//   if (str[left] != str[right]) return false
-//   return checkPalindrome(str, left + 1, right - 1)
-// }
-// checkPalindrome(aman,0,)

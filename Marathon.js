@@ -1,8 +1,37 @@
 function marathon(enengy, distance){
-    console.log(enengy,distance);
-var queue = [];
+    // console.log(enengy,distance);
 
+    var sumEArr = [];
+    var sumDArr = [];
+    var sum = 0;
 
+  for (var i = enengy.length-1; i >= 0 ; i--){
+      sum = sum + enengy[i]
+      sumEArr.push( sum );
+    }
+    sum = 0;
+  for (var i = distance.length-1; i >= 0; i--) {
+    sum = sum + distance[i]
+    sumDArr.push(sum);
+  }
+  //   console.log(sumEArr);
+  // console.log(sumDArr);
+var count = 0;
+  for(var i = 0; i < sumEArr.length; i++){
+    if(enengy[i] > distance[i] && sumEArr[i] > sumDArr[i]){
+      
+      console.log(i);
+      break;
+    }else{
+      // 
+      count++;
+
+    }
+  }
+
+  if(count == sumDArr.length){
+    console.log("No starting points");
+  }
     
     
 }

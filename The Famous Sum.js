@@ -1,19 +1,10 @@
-
-  function factorial(n) {
-    if (n == 0 || n == 1) return 1
-    return n * factorial(n - 1)
-  }
-
-
-
-
 function runProgram(input) {
-    var n = +input;
-
-  console.log(factorial(n));
+   var input = input.trim().split(
+)
+   
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`6`);
+    runProgram(``);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
@@ -32,11 +23,3 @@ function runProgram(input) {
       process.exit(0) ;
     });
   }
-
-
-// function checkPalindrome(str, left, right) {
-//   if (left == right) return true
-//   if (str[left] != str[right]) return false
-//   return checkPalindrome(str, left + 1, right - 1)
-// }
-// checkPalindrome(aman,0,)

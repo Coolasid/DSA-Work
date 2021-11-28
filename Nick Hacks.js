@@ -1,47 +1,49 @@
-function easyRec(N, arr){
+function NickHacks(N,amount ){
+    // console.log(N);
 
-    // console.log(N, arr);
-    var sum = 0;
-    function addArr(i){
+    
+   
+   
+   if(amount == N){
+     return true;
+   }
+   if(amount > N){
+     return false;
+   }
 
-        if( i == N){
-            return sum;
-        }
-
-        sum = sum + arr[i];
-        return addArr(i+1);
-    }
-
-    console.log(addArr(0));
+  return NickHacks(N, amount*10) || NickHacks(N,amount*20);
+    
 }
+
+
 
 
 function runProgram(input) {
    var input = input.trim().split("\n");
 
-   var testCase = +input[0];
-   
-   var line = 1;
-    
-   for( var i = 0; i < testCase; i++){
-      
-       var N = +input[line]
-       line++;
-       var arr = input[line].split(" ").map(Number);
-       line++;
+   var testCases = +input[0];
 
-      (easyRec(N, arr));
+   var line = 1;
+   for( var i = 0; i < testCases; i++){
+       var N = +input[line].trim();
+       line++;
+     var amount = 1;
+       NickHacks(N,amount);
+     if (NickHacks(N, amount)) {
+       console.log("Yes")
+     } else {
+       console.log("No");
+     }
    }
-   
+  
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`3
-5
-6 3 8 2 -4
-5
--10 -7 10 2 -2
-5
--4 -5 6 -3 9`);
+      runProgram(`5
+1
+2
+10
+25
+200`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

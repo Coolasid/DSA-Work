@@ -1,34 +1,27 @@
-function NickHacks(N){
-    // console.log(N);
-    if( N % 10 == 0  || N % 20 == 0 || N == 1){
-        console.log("Yes");
-    }else{
-        console.log("No");
+function recLength(str,i){
+    // return str
+
+    if(str[i] == undefined){
+        return 0;
     }
+    
+
+    return 1 +  recLength(str,i+1);
+
+
 }
 
 
+
 function runProgram(input) {
-   var input = input.trim().split("\n");
-
-   var testCases = +input[0];
-
-   var line = 1;
-   for( var i = 0; i < testCases; i++){
-       var N = +input[line].trim();
-       line++;
-       
-        NickHacks(N);
-   }
+   var str = input.trim()
+   var i = 0;
+   
+   console.log(recLength(str,i));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`5
-1
-2
-10
-25
-200`);
+      runProgram(`masaischool`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
