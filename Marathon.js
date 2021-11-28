@@ -14,11 +14,13 @@ function marathon(enengy, distance){
     sum = sum + distance[i]
     sumDArr.push(sum);
   }
+
+  
   //   console.log(sumEArr);
   // console.log(sumDArr);
 var count = 0;
   for(var i = 0; i < sumEArr.length; i++){
-    if(enengy[i] > distance[i] && sumEArr[i] > sumDArr[i]){
+    if( enengy[i] > distance[i] && sumEArr[i] > sumDArr[i]){
       
       console.log(i);
       break;
@@ -33,6 +35,8 @@ var count = 0;
     console.log("No starting points");
   }
     
+
+
     
 }
 
