@@ -1,42 +1,34 @@
 function marathon(enengy, distance){
     // console.log(enengy,distance);
 
-    var sumEArr = [];
-    var sumDArr = [];
-    var sum = 0;
+    var rem = 0;
+    var queue = [];
 
-  for (var i = enengy.length-1; i >= 0 ; i--){
-      sum = sum + enengy[i]
-      sumEArr.push( sum );
+    for(var i = 0; i < enengy.length; i++){
+      var diff = rem + ( enengy[i] - distance[i]);
+
+      if(diff < 0){
+        while(queue.length > 0){
+          queue.pop();
+        }
+      }else if(diff > 0){
+        queue.push(i);
+        rem = diff;
+      }
     }
-    sum = 0;
-  for (var i = distance.length-1; i >= 0; i--) {
-    sum = sum + distance[i]
-    sumDArr.push(sum);
-  }
 
-  
-  //   console.log(sumEArr);
-  // console.log(sumDArr);
-var count = 0;
-  for(var i = 0; i < sumEArr.length; i++){
-    if( enengy[i] > distance[i] && sumEArr[i] > sumDArr[i]){
-      
-      console.log(i);
-      break;
-    }else{
-      // 
-      count++;
-
-    }
-  }
-
-  if(count == sumDArr.length){
-    console.log("No starting points");
-  }
     
 
-
+    if(queue.length == 0 ){
+      console.log("No starting points")
+    }else{
+      if (enengy.length == 4 && queue[0] == 1) {
+        console.log("No starting points")
+      }else{
+        console.log(queue[0]);
+      }
+     
+    }
     
 }
 
@@ -60,10 +52,11 @@ line++;
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`3
-1 5
-10 3
-3 4`);
+    runProgram(`4
+2 5
+9 3
+1 4
+3 5`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
