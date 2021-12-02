@@ -1,24 +1,26 @@
 
 
-function allSub(N, str, curr,s,newStr){
+function allSub(str,newStr,curr){
     // return N
     
-
-    if(curr > str.length-1){
-        return;
-    }
-
-    for(var i = s; i <= curr; i++){
-        newStr += str[i];
-        console.log(newStr);
-    }
-    
+  if(newStr.length  > 0){
+    // var ans = newStr.join()
+    console.log(newStr.join(""));
+ 
 
     
+  }
+  if(curr == str.length){
+    return;
+  }
 
-    return allSub(N,str,curr+1,s+1,newStr);
+  for(var i = curr; i < str.length; i++){
+    newStr.push(str[i]);
+    allSub(str,newStr,i+1);
+    newStr.pop();
+  }
+  
 }
-
 
 
 function runProgram(input) {
@@ -26,12 +28,12 @@ function runProgram(input) {
    var N = +input[0];
    var str = input[1].trim()
    var curr = 0;
-   var s = 0 ;
-    console.log(allSub(N,str,curr,s));
+  var newStr = [];
+   allSub(str,newStr,curr);
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`4
-abcd`);
+      runProgram(`5
+abcde`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

@@ -21,8 +21,32 @@
 
 // int[2]: An array with the numbers of times she broke her records.Index 0 is for breaking most points records, and index 1 is for breaking least points records.
 
-function breakingRecords(scores) {
+function breakingRecords(s) {
     // Write your code here
+
+    var min = s[0];
+    var max = s[0];
+    var maxArr = [0];
+    var minArr = [0];
+
+    for(var i = 1; i < s.length; i++){
+        if(max < s[i] ){
+            max = s[i];
+            maxArr.push(1);
+            minArr.push(0);
+        }else if(min > s[i]){
+            min = s[i];
+            minArr.push(1);
+            maxArr.push(0);
+        }else if( max == s[i] || min == s[i]){
+            minArr.push(1);
+            maxArr.push(1);
+        }
+
+    }
+
+    console.log(maxArr);
+    console.log(minArr);
 
 }
 breakingRecords([12,24,10,24])
