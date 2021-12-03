@@ -1,33 +1,40 @@
-function drStrPoss(N, arr){
-    var data = {};
+var obj = {}
 
-    function rec(curr, n, arr, newArr){
-        if(data[newArr.join(" ")] == undefined){
-            data[newArr.join(" ")] =1
-            console.log(newArr.join(" "))
-        }
+function drSP(arr, newArr, curr){
+    // console.log(arr, newArr, curr)
 
-        if(curr == arr.length){
-            return
+    if(newArr.length >= 0){
+        if(obj[newArr.join(" ")] == undefined){
+            obj[newArr.join(" ")] = 1
+            console.log(newArr.join(" "));
         }
-
-        for( var i = curr; i< n;i++){
-            newArr.push(arr[i])
-            rec(i+1,n,arr,newArr)
-            newArr.pop()
-        }
+        
     }
-    rec(0,N,arr,[]);
+
+    if(curr > arr.length){
+        return;
+    }
+
+    for(var i = curr; i < arr.length; i++){
+        newArr.push(arr[i]);
+
+        drSP(arr,newArr,i+1);
+
+        newArr.pop();
+    }
 }
 
 
 function runProgram(input) {
    var input = input.trim().split("\n");
 
-   var N = +input[0];
-   var arr = input[1].trim().split(" ").map(Number).sort((a, b) => {return a-b});
-
-    drStrPoss(N, arr);
+   var testCases = +input[0];
+   
+    var arr = input[1].trim().split(' ').map(Number).sort((a, b) => { return a - b });
+    
+   var newArr = [];
+    var curr = 0;
+   drSP(arr,newArr,curr);
    
   }
   if (process.env.USERNAME === "siddhesh") {
