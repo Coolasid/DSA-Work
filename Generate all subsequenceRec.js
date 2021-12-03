@@ -33,7 +33,7 @@ function runProgram(input) {
   }
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`5
-abcde`);
+abc`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
