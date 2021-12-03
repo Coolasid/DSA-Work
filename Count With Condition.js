@@ -1,7 +1,5 @@
-
-
-function sumENot(arr, newArr, curr,sumArr) {
-    // console.log(arr,newArr,curr);
+function countWCond(N, arr, newArr, curr, sumArr) {
+    // console.log(N, arr, newArr, curr)
 
     if (newArr.length > 0) {
         // console.log(newArr);
@@ -9,52 +7,48 @@ function sumENot(arr, newArr, curr,sumArr) {
         for (var j = 0; j < newArr.length; j++) {
             sum += newArr[j];
         }
-        // console.log(sum);
         sumArr.push(sum);
-
     }
-    if (curr > arr.length) {
+    if (curr > N) {
         return;
     }
-    for (var i = curr; i < arr.length; i++) {
+    for (var i = curr; i < N; i++) {
         newArr.push(arr[i]);
-        sumENot(arr, newArr, i + 1,sumArr);
+        countWCond(N, arr, newArr, i + 1, sumArr);
         newArr.pop();
     }
 }
 
 
-
-
 function runProgram(input) {
     var input = input.trim().split("\n");
-    var N = +input[0];
+    var arr1 = input[0].trim().split(" ").map(Number);
     var arr = input[1].trim().split(" ").map(Number);
-    var K = +input[2];
     var newArr = [];
-    var curr = 0;
     var sumArr = [];
+    var curr = 0;
+    var N = arr1[0];
+    var K = arr1[1];
     var count = 0;
-    sumENot(arr, newArr, curr,sumArr);
+    countWCond(N, arr, newArr, curr, sumArr);
+
     // console.log(sumArr);
-    for (var i = 0; i < sumArr.length; i++) {
-        if (sumArr[i] == K) {
+
+    for (var k = 0; k < sumArr.length; k++) {
+        if (sumArr[k] == K) {
             count++;
         }
     }
+
     if (count > 0) {
-        console.log("yes")
+        console.log(count);
     } else {
-        console.log("no");
+        console.log(0)
     }
-
-
-
 }
 if (process.env.USERNAME === "siddhesh") {
-    runProgram(`9
-1 2 3 4 5 6 7 8 9
-5`);
+    runProgram(`4 10
+1 2 3 4`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
