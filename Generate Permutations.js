@@ -3,21 +3,21 @@
 function allSub(str, newStr, curr) {
   // return N
 
-  if (newStr.length > 0) {
-    // var ans = newStr.join()
-    console.log(newStr.join(""));
-
-
-
+  if (K < 0) {
+    return 0;
   }
-  if (curr == str.length) {
+  if (newStr.length == str.length) {
+    console.log(newStr);
+    newStr = [];
     return;
   }
 
-  for (var i = curr; i < str.length; i++) {
+
+
+
+  for (var i = 0; i < str.length ; i++) {
     newStr.push(str[i]);
-    allSub(str, newStr, i + 1);
-    newStr.pop();
+    masaiways(str, newStr,curr + 1);
   }
 
 }

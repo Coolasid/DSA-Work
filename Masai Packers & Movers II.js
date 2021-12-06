@@ -1,18 +1,19 @@
-var count = 0;
-var arr1 = [];
-function masaiways2(arr, N, K){
-    
+
+var arrW = [];
+function masaiways2(arr, N, K,curr){
+  if (K < 0) {
+    return;
+  }
     if(K == 0){
-        count++;
        
+       arrW.push(curr)
+       curr = 0;
         return;
     }
 
-    if(K < 0){
-        return;
-    }
+    
     for(var i = 0; i < arr.length; i++){
-        masaiways2(arr,N, K - arr[i])
+        masaiways2(arr,N, K - arr[i],curr+1)
     }
 }
 
@@ -24,9 +25,16 @@ function runProgram(input) {
     var K = +arr1[0];
     var N = +arr1[1];
 
-    masaiways2(arr, N, K);
-    console.log(count)
-console.log(arr1);
+    masaiways2(arr, N, K,0);
+     arrW.sort((a,b) => (a-b))
+
+    if(arrW.length > 0){
+      console.log(arrW[0], arrW[arrW.length-1]);
+    }else{
+      console.log("-1")
+    }
+    
+
 
 
 }
