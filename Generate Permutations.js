@@ -1,35 +1,50 @@
 
+var reqArr = [];
 
-function allSub(str, newStr, curr) {
+function GP(arr,curr) {
   // return N
 
-  if (K < 0) {
-    return 0;
-  }
-  if (newStr.length == str.length) {
-    console.log(newStr);
-    newStr = [];
+  // console.log(str,newStr,curr);
+
+  if(curr == arr.length){
+    var ans = arr.join("");
+    reqArr.push(ans);
     return;
   }
+  for(var i = curr; i < arr.length; i++){
+    var temp = arr[i];
+      arr[i] = arr[curr];
+      arr[curr] = temp;
 
+      GP(arr,curr+1);
 
+      var temp1 = arr[i];
+      arr[i] = arr[curr];
+      arr[curr] = temp1;
 
-
-  for (var i = 0; i < str.length ; i++) {
-    newStr.push(str[i]);
-    masaiways(str, newStr,curr + 1);
   }
 
 }
 
 
+
 function runProgram(input) {
   var input = input.trim().split("\n");
   var N = +input[0];
-  var str = input[1].trim().split(" ").map(Number);
+  var arr = input[1].trim().split(" ").map(Number);
   var curr = 0;
-  var newStr = [];
-  allSub(str, newStr, curr);
+  
+  GP(arr, curr);
+
+  reqArr.sort((a,b) => (a -b))
+
+  reqArr.forEach((el)=>{
+    var reqAns = el.split("")
+
+    console.log(reqAns.join(" "));
+  })
+
+   
 }
 if (process.env.USERNAME === "siddhesh") {
   runProgram(`3
