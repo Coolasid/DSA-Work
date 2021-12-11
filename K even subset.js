@@ -1,4 +1,4 @@
-
+var ans = 0;
 function kEvenSub(K, arr, curr, newArr) {
 
     if (newArr.length > 0) {
@@ -10,7 +10,7 @@ function kEvenSub(K, arr, curr, newArr) {
                 count++;
             }
         }
-        if (count == K) {
+        if (count >= K) {
             ans++;
         }
         // console.log(ans);
@@ -40,7 +40,7 @@ function runProgram(input) {
    for(var i = 0; i < testCases; i++){
        var curr = 0;
        var newArr = [];
-       var ans = 0;
+       ans = 0;
 
         var arr1 = input[line].trim().split(" ").map(Number);
         line++;
@@ -50,10 +50,6 @@ function runProgram(input) {
     //    var N = +arr1[0];
        var K = +arr1[1];
 
-
-     
-
-
        kEvenSub(K,arr,curr,newArr);
        console.log(ans);
 
@@ -62,9 +58,11 @@ function runProgram(input) {
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`1
+      runProgram(`2
 4 2
-1 2 3 4`);
+4 3 2 1
+2 1
+2 3`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
