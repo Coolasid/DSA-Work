@@ -5,7 +5,7 @@ function allSub(str,newStr,curr){
     
   if(newStr.length  > 0){
     // var ans = newStr.join()
-    console.log(newStr.join(" "));
+    console.log(newStr.join(""));
  
 
     
@@ -26,14 +26,14 @@ function allSub(str,newStr,curr){
 function runProgram(input) {
    var input = input.trim().split("\n");
    var N = +input[0];
-   var str = input[1].trim().split(" ").map(Number)
+   var str = input[1].trim()
    var curr = 0;
   var newStr = [];
    allSub(str,newStr,curr);
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`4
-1 2 3 4`);
+    runProgram(`4
+abcd`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

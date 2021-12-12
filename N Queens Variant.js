@@ -1,9 +1,24 @@
 
-
+var count = 0;
 function nQueens(B, currRow, N){
 
     if( currRow == N){
         count++;
+        // console.log(B);
+
+        // to get Board=>
+
+        for(var i = 0; i < N; i++){
+            var print = "";
+            for(var j = 0; j < N; j++){
+                print += B[i][j] + " ";
+            }
+            console.log(print);
+            
+        }
+        console.log("----------")
+        
+        
         return;
     }
     for(var i = 0; i < N; i++){
@@ -16,41 +31,50 @@ function nQueens(B, currRow, N){
 
 }
 
-function isQueenSafe(B, currRow, i, N){
+function isQueenSafe(B, row, col, N){
     var countq = 0;
 
     //for vertical=>
     for(var j = 0; j < N; j++ ){
-        if( B[j][i] == 1){
+        if( B[j][col] == 1){
             countq++;
         }
     }
 
+    if (countq >= 1) {
+        return false;
+    }
+    
     //for diagonal left=>
-    for(var k = currRow; k >= 0; k--){
-        for(var l = k; l >= 0; l--){
-            if( B[k][l] == 1){
-                countq++;
-                break;
+    var j = col - 1;
+    for(var k = row-1; k >= 0; k--){
+        
+        while(j >= 0){
+            if( B[k][j] == 1){
+                return false
             }
+            break;
         }
+
+        j--;
+        
     }
 
     //for diagonal right=>
-    for(var m = currRow; m >= 0; m--){
-        for(var o= m; o < N; o++){
-            if( B[m][o] == 1){
-                countq++;
-                break;
+    var m = col + 1;
+
+    for(var l = row-1; l >= 0; l--){
+        
+        while( m < N){
+            if(B[l][m]== 1){
+                return false
             }
+            break
         }
+        m++;
     }
 
-    if(countq > 1){
-        return false;
-    }else{
-        true;
-    }
+    return true;
 
 }
 
@@ -58,7 +82,7 @@ function isQueenSafe(B, currRow, i, N){
 function runProgram(input) {
    var N = +input;
    var currRow = 0;
-    var count = 0;
+    
 //    console.log(N);
 
     // var B = [N][N];
@@ -67,6 +91,7 @@ function runProgram(input) {
 
     nQueens(B,currRow,N)
     console.log(count);
+    
    
   }
   if (process.env.USERNAME === "siddhesh") {
