@@ -3,7 +3,7 @@ function sortOut(N, arr){
     for( var i = 0; i< arr.length; i++){
         arr1.push(arr[i]);
     }
-    console.log(arr1);
+    // console.log(arr1);
     for( var i = 0; i< N-1; i++){
         for( var j = 0; j < N-i-1; j++){
             if( arr[j] > arr[j+1]){
@@ -14,7 +14,7 @@ function sortOut(N, arr){
         }
 
     }
-    console.log(arr)
+    // console.log(arr)
       var out = "";
     for( var i = 0 ; i < arr.length; i++){
         for( var j = 0; j < arr1.length; j++){

@@ -1,24 +1,12 @@
-function mrRobotE(N, str, newStr){
+function mrRobotE(N, str, newStr,I, J){
     // console.log(N,str);
 
-
-    if(N % 2 == 1){
-    var midPart = str[Math.floor(str.length/2)]
-    }else{
-      var midPart = str[Math.floor(str.length / 2)-1]
+    if( I > J){
+      return newStr;
     }
-    // console.log(midPart);
-    newStr += midPart;
-  for (var i = 0; i < Math.floor(str.length / 2) ; i++){
-    newStr += str[i];
-  }
-
-  for (var i = Math.floor(str.length / 2) + 1; i < str.length; i++){
-    newStr += str[i];
-  }
-
-  console.log(newStr);
-
+    let mid = Math.floor((I+J) / 2);
+    newStr = newStr + str[mid] + mrRobotE(N, str, newStr, I, mid - 1) + mrRobotE(N, str, newStr, mid+1, J)
+    return newStr;
 }
 
 
@@ -29,12 +17,17 @@ function runProgram(input) {
    var line = 1;
 
    for(var i = 0; i < testCases; i++){
+     
+     
      var newStr = "";
        var N = +input[line];
        line++;
        var str = input[line].trim()
        line++;
-       mrRobotE(N,str,newStr);
+     var I = 0;
+     var J = str.length - 1;
+     
+      console.log( mrRobotE(N,str,newStr,I,J));
    }
    
   }

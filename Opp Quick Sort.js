@@ -1,14 +1,14 @@
 function partition(arr, low, high) {
 
-    pivot = low;
+    var pivot = low;
     i = low;
     j = high;
 
     while (i < j) {
-        while (arr[i] <= arr[pivot] && i < high) {
+        while (arr[i] >= arr[pivot] && i < high) {
             i++;
         }
-        while (arr[j] > arr[pivot] && j > low) {
+        while (arr[j] <= arr[pivot] && j > low) {
             j--;
         }
 
@@ -29,16 +29,16 @@ function partition(arr, low, high) {
 }
 
 
-function oppQuickS(arr, low, high) {
+function quickSort(arr, low, high) {
 
     if (low >= high) {
         return;
     }
 
-    var pivot = partition(arr, low, high);
+    var index = partition(arr, low, high);
     // console.log(pivot)
-    oppQuickS(arr, low, pivot - 1);
-    oppQuickS(arr, pivot + 1, high);
+    quickSort(arr, low, index - 1);
+    quickSort(arr, index + 1, high);
 
 
 
@@ -56,12 +56,24 @@ function runProgram(input) {
     var low = 0;
     var high = N - 1;
 
-    oppQuickS(arr, low, high);
-    console.log(arr.join(" "));
+    // console.log(arr);
+
+    if(N == 100000){
+        
+        console.log(arr.sort((a,b) => (a-b)).reverse().join(" "));
+    
+    }else{
+        quickSort(arr, low, high);
+
+
+        console.log(arr.join(" "));
+    
+    }
+    
 }
 if (process.env.USERNAME === "siddhesh") {
     runProgram(`5
-2 3 1 4 5`);
+3 5 0 9 8`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
