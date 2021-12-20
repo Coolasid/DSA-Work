@@ -101,6 +101,7 @@ function runProgram(input) {
   validSudoku(B, row, col);
 
   if(count == 0){
+      
       console.log("-1")
   }
    
