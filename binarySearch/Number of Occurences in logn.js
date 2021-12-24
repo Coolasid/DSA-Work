@@ -15,9 +15,11 @@ function BinaryS(N, K, arr, ans) {
         if (arr[mid] == K) {
 
             ans.push(arr[mid]);
-            arr.splice(mid,1);
 
-            return BinaryS(N, K, arr, ans);
+            // arr.splice(mid,1);
+
+            
+            BinaryS(N, K, arr, ans)
         }
 
         if (arr[mid] > K) {

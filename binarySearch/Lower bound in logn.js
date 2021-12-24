@@ -1,34 +1,34 @@
+function BinaryS(N, K, arr) {
 
-
-function NumbOLog(N, K, arr, low, high, ans) {
+    arr.sort((a, b) => { return a - b });
 
     // console.log(N, K, arr);
 
+    let low = 0;
 
-    let mid = Math.floor((low + (high - low) / 2));
+    let high = N - 1;
 
-    if (low > high) {
-        return -1;
+    while (low <= high) {
+
+        let mid = Math.floor((low +  (high - low) / 2));
+
+        
+
+        if (arr[mid] >= K) {
+
+            high = mid;
+
+
+        } else {
+            low = mid + 1;
+            
+        }
+
     }
 
-    if (arr[mid] == K) {
-        ans.push(mid);
-        arr.splice(mid, 1)
-        return NumbOLog(N, K, arr, low, high, ans)
-    }
-    if (arr[mid] > K) {
-
-        return NumbOLog(N, K, arr, low, mid - 1, ans)
-    } else {
-
-        return NumbOLog(N, K, arr, mid + 1, high, ans);
-    }
-
-
+    return low;
 
 }
-
-
 
 
 function runProgram(input) {
@@ -36,25 +36,16 @@ function runProgram(input) {
 
     var arr1 = input[0].trim().split(" ").map(Number);
 
-    var arr = input[1].trim().split(" ").map(Number)
+    var arr = input[1].trim().split(" ").map(Number);
 
-    //    console.log(arr);
-    var ans = [];
+
     var N = +arr1[0];
     var K = +arr1[1];
 
-    var low = 0;
-    var high = N - 1;
-
-
-    NumbOLog(N, K, arr, low, high, ans);
-    console.log(ans);
-    console.log(ans.length);
-
-
+    console.log(BinaryS(N, K, arr));
 }
 if (process.env.USERNAME === "siddhesh") {
-    runProgram(`5 2
+    runProgram(`5 3
 1 1 2 2 5`);
 } else {
     process.stdin.resume();
