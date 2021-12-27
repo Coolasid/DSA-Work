@@ -1,62 +1,114 @@
-function BinaryS(N, K, arr, ans) {
 
-    arr.sort((a, b) => { return a - b });
-
-    // console.log(N, K, arr);
+function lowerBound( arr, K){
 
     let low = 0;
 
-    let high = N - 1;
+    let high = arr.length-1;
 
-    while (low <= high) {
+    let ans = -1;
 
-        let mid = Math.floor((low + high) / 2);
+    while( low <= high){
 
-        if (arr[mid] == K) {
+        let mid = Math.floor( low + (high - low)/2);
 
-            ans.push(arr[mid]);
+        if( arr[mid] == K){
 
-            // arr.splice(mid,1);
+            ans = mid;
 
-            
-            BinaryS(N, K, arr, ans)
-        }
+            high = mid-1;
 
-        if (arr[mid] > K) {
+        }else if( arr[mid] > K ){
 
-            high = mid - 1;
+            high = mid -1;
 
-
-        } else {
-            low = mid + 1;
+        }else{
+            low = mid +1;
         }
 
     }
 
-    
+    return ans;
 
 }
+
+
+function upperBound(arr, K, arr2){
+
+    let low = 0;
+
+    let high = arr.length-1;
+
+    while( low <= high ){
+
+        let mid = Math.floor(low + (high - low) / 2);
+        
+        
+        if( arr[mid] > K){
+            arr2.push(mid);
+            high = mid - 1;
+        }else{
+            low = mid +1;
+        }
+
+    }
+
+    if(arr2.length> 0){
+
+        return Math.min(...arr2);
+
+    }else{
+
+        return -1;
+    }
+
+}
+
+
 
 
 function runProgram(input) {
     var input = input.trim().split("\n");
 
-    var arr1 = input[0].trim().split(" ").map(Number);
+    let arr1 = input[0].trim().split(" ").map(Number);
 
-    var arr = input[1].trim().split(" ").map(Number);
+    let arr = input[1].trim().split(" ").map(Number)
 
-    var ans =[]
+    //    console.log(arr);
+    let arr2 = [];
+    let N = +arr1[0];
+    let K = +arr1[1];
 
-    var N = +arr1[0];
-    var K = +arr1[1];
+    let lb = lowerBound(arr, K);
 
-    BinaryS(N, K, arr, ans);
-    console.log(ans);
+    let ub = upperBound(arr, K, arr2);
+
+
+    // console.log(lb);
+    // console.log(ub);
+    // NumbOLog(N, K, arr, ans);
     
+    if( lb == -1 && ub == -1){
+
+        console.log(0)
+
+    }else if ( ub == -1){
+
+        console.log(N - lb)
+
+    }else if( lb == -1){
+
+        console.log( N - ub)
+
+    }else{
+
+        console.log(ub - lb);
+    }
+
+
 }
 if (process.env.USERNAME === "siddhesh") {
-    runProgram(`10 2
-2 2 2 2 2 2 2 2 2 2`);
+    runProgram(`6 3
+2 3 3 3 6 9`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
