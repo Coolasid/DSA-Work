@@ -1,42 +1,83 @@
+function lowerBound(arr, x){
+
+  let low = 0;
+  let high = arr.length - 1;
+
+  let ans = -1;
+
+  while(low <= high){
+
+    let mid = Math.floor(low + (high - low) / 2);
+
+    if( arr[mid] == x){
+
+      ans = mid;
+      high = mid -1;
+
+    }else if( arr[mid] > x){
+
+      high = mid - 1;
+    }else{
+
+      low = mid +1;
+
+    }
+
+
+  }
+
+  return ans;
+
+}
+
+
+function upperBound(arr, x){
+
+  let arr1 = [];
+
+  let low = 0;
+
+  let high = arr.length - 1;
+
+ 
+
+  while (low <= high) {
+
+    let mid = Math.floor((low + (high - low) / 2));
+
+
+
+    if (arr[mid] > x) {
+      arr1.push(mid);
+      high = mid - 1;
+
+    } else {
+      low = mid + 1;
+    }
+
+  }
+
+  // console.log(arr1);
+
+  return Math.min(...arr1);
+
+}
+
+
+
+
 function nikhilS(N, arr, x, q, countO, countZ){
 
     // console.log(N,arr, x , q);
 
+  let lb = lowerBound(arr, x);
 
-    let low = 0;
-    let high = N-1;
-    let ans = 0;
+  let ub = upperBound(arr, x);
 
-    while( low <= high){
+  
 
-        let mid = Math.floor( low + (high - low)/2);
+  return ub;
 
-        if( arr[mid] == x){
-
-            if( q == 1){
-                var arrO = arr.slice(mid+1, N)
-                return arrO.length;
-            }else{
-                var arrZ = arr.slice(0, mid);
-                return arrZ.length;
-            }
-
-        }
-
-        if( arr[mid] > x){
-
-            high = mid -1;
-
-        }else{
-            low = mid + 1;
-        }
-
-    }
-
-   
-
-
-    return ans;
 }
 
 
@@ -50,8 +91,9 @@ function runProgram(input) {
     var testCases = +input[2];
 
     var line = 3;
-    arr.sort()
-
+    
+  arr.sort((a, b) => {return a-b});
+  
     for(var i = 0; i < testCases; i++){
         // arr.sort()
 
@@ -64,6 +106,8 @@ function runProgram(input) {
         var countZ = 0;
 
         line++;
+
+        
 
        console.log( nikhilS(N, arr, x, q, countO, countZ));
     }
