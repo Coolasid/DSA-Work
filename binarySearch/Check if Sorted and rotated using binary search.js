@@ -2,8 +2,27 @@ function checkRA(N, arr){
 
     // console.log(N, arr)
 
+    let low = 0;
+    let high = N - 1;
+
     
 
+    while (low <= high) {
+
+        let mid = Math.floor((high + low) / 2);
+
+        if (arr[mid] < arr[(mid + 1) % N] && arr[mid] < arr[(mid - 1) % N]) {
+
+            return  mid;
+            
+        }
+        if (arr[low] <= arr[mid]) {
+            low = mid;
+        } else {
+            high = mid;
+        }
+
+    }
 
 }
 
@@ -15,9 +34,17 @@ function runProgram(input) {
    var N = +input[0];
    var arr = input[1].trim().split(" ").map(Number);
 
-    checkRA(N, arr);
+   let ans =  checkRA(N, arr);
 
-   
+//    console.log(ans);
+
+   if( ans > 0){
+
+        console.log("YES");
+   }else{
+       console.log("NO");
+   }
+
   }
   if (process.env.USERNAME === "siddhesh") {
       runProgram(`6
