@@ -1,31 +1,82 @@
-function rotateArr(N, arr, K){
+function BinaryS( K, arr, l, h ) {
 
-    let low = 0;
-    let high = N -1;
+  // arr.sort((a, b) => { return a - b });
 
-    let ans = -1;
+  // console.log(N, K, arr);
 
-    while( low <= high ){
+  let low = l;
 
-        let mid = Math.floor( low + ( high - low)/ 2);
+  let high = h;
 
+  while (low <= high) {
 
-        if( arr[mid] == K){
+    let mid = Math.floor((low + high) / 2);
 
-            return mid;
+    if (arr[mid] == K) {
 
-        }else if( arr[mid] > K){
-
-            high = mid -1;
-        }else{
-
-            low = mid +1;
-        }
-
+      return mid;
     }
 
-    return ans
+    if (arr[mid] > K) {
 
+      high = mid - 1;
+
+
+    } else {
+      low = mid + 1;
+    }
+
+  }
+
+  return -1;
+
+}
+
+function minSortArr(N, arr) {
+
+  // console.log(N, arr);
+
+  let low = 0;
+  let high = N - 1;
+
+  while (low <= high) {
+
+    let mid = Math.floor((high + low) / 2);
+
+    if (arr[mid] < arr[(mid + 1) % N] && arr[mid] < arr[(mid - 1) % N]) {
+
+      return mid;
+
+    }
+    if (arr[low] <= arr[mid]) {
+      low = mid;
+    } else {
+      high = mid;
+    }
+
+  }
+
+}
+
+
+function rotateArr(N, arr, K){
+
+  let pivot = minSortArr(N, arr);
+  let find;
+
+  if( K >= arr[ pivot] && K <= arr[N -1]){
+
+    find = BinaryS(K, arr, pivot, N - 1);
+
+
+  }else{
+
+     find = BinaryS( K, arr, 0, pivot-1);
+
+  }
+
+  return find;
+   
 }
 
 
@@ -45,7 +96,7 @@ function runProgram(input) {
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`5 1
+    runProgram(`5 1
 3 4 5 1 2`);
   } else {
     process.stdin.resume();
