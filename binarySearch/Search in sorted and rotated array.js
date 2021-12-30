@@ -43,7 +43,7 @@ function minSortArr(N, arr) {
 
     let mid = Math.floor((high + low) / 2);
 
-    if (arr[mid] < arr[(mid + 1) % N] && arr[mid] < arr[(mid - 1) % N]) {
+    if (arr[mid] < arr[(mid + 1) % N] && arr[mid] < arr[(mid - 1 ) % N]) {
 
       return mid;
 

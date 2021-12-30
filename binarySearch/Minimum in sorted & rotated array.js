@@ -4,24 +4,24 @@ function minSortArr(N, arr){
 
     let low = 0;
     let high = N -1;
+    let ans = arr[0];
 
     while( low <= high ){
 
       let mid = Math.floor( ( high + low ) / 2);
 
-      if( arr[mid] < arr[(mid + 1) % N ] && arr[mid] < arr[( mid-1) % N]){
+     if( arr[mid] >= ans){
 
-        return arr[mid];
+      low = mid +1;
+     }else{
+       ans = arr[mid];
+       high = mid-1;
+     }
 
-      }
-      if( arr[ low ] <= arr[mid]){
-        low = mid;
-      }else{
-        high = mid;
-      }
+
 
     }
-
+    return ans
 }
 
 
