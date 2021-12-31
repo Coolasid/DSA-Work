@@ -6,11 +6,11 @@ function runProgram(input) {
    var sum = 0;
    var hrLine = 0;
 
-        var arr1 = input[1].trim().split(" ").map(Number);
+        var arr1 = input[1].trim().split(" ").map(Number).sort((a,b)=> a-b);
 
-        var arr2 = input[2].trim().split(" ").map(Number);
+        var arr2 = input[2].trim().split(" ").map(Number).sort((a,b)=> a-b);
 
-        console.log(arr1);
+        // console.log(arr1);
 
         while( hrLine < N){
 

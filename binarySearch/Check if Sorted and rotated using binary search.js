@@ -1,28 +1,10 @@
+function 
+
+
+
 function checkRA(N, arr){
 
-    // console.log(N, arr)
-
-    let low = 0;
-    let high = N - 1;
-
-    
-
-    while (low <= high) {
-
-        let mid = Math.floor((high + low) / 2);
-
-        if (arr[mid] < arr[(mid + 1) % N] && arr[mid] < arr[(mid - 1) % N]) {
-
-            return  mid;
-            
-        }
-        if (arr[low] <= arr[mid]) {
-            low = mid;
-        } else {
-            high = mid;
-        }
-
-    }
+  
 
 }
 
