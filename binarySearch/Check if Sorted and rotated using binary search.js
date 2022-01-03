@@ -1,10 +1,65 @@
-function 
+function minSortArr(N, arr){
+
+    // console.log(N, arr);
+
+    let low = 0;
+    let high = N -1;
+    let ans = arr[0];
+    let ind = 0;
+
+    while( low <= high ){
+
+      let mid = Math.floor( ( high + low ) / 2);
+
+     if( arr[mid] >= ans){
+
+      low = mid +1;
+     }else{
+       ans = arr[mid];
+       ind = mid;
+       high = mid-1;
+     }
 
 
+
+    }
+    return ind
+}
 
 function checkRA(N, arr){
 
-  
+  var count = 0;
+
+  var mid = minSortArr(N, arr);
+  // console.log(mid);
+
+  if( mid == 0 ){
+    return "NO";
+  }
+
+  var arrL = arr.slice(0, mid);
+  var arrR = arr.slice(mid, N);
+
+  // console.log(arrL, arrR)
+
+
+  for(var i = 0; i < arrL.length; i++){
+
+    if( arrL[i] > arrL[i+1]){
+      return "NO"
+    }
+
+  }
+
+  for(var i = 0; i < arrR.length; i++){
+
+    if( arrR[i] > arrR[i+1]){
+      return "NO"
+    }
+
+  }
+
+return "YES"
 
 }
 
@@ -16,16 +71,11 @@ function runProgram(input) {
    var N = +input[0];
    var arr = input[1].trim().split(" ").map(Number);
 
-   let ans =  checkRA(N, arr);
+  console.log(  checkRA(N, arr));
 
 //    console.log(ans);
 
-   if( ans > 0){
-
-        console.log("YES");
-   }else{
-       console.log("NO");
-   }
+   
 
   }
   if (process.env.USERNAME === "siddhesh") {

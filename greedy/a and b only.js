@@ -1,30 +1,26 @@
 function abOnly(arr){
 // console.log(arr);
 
-let ans = "";
 
     for(var i = 0; i < arr.length; i++){
 
         if( arr[i] == "?"){
 
-            if( arr[i+1] == "b"){
-                arr[i] = "a";
-            }
-            if( arr[i -1] == "a"){
-                arr[i] = "b";
-            }
-
-            if( i == 0 && arr[i + 1] == "b"){
-                arr[i] = "a";
-            }else if( i == 0 && arr[i + 1] != "b"){
-                arr[i] = "b";
+            if( arr[i] == 0 && arr[i+1] == "a"){
+                arr[i] = "b"
+            }else if( arr[i] == 0 && arr[i+1] == "b"){
+              ans += "a";
             }
 
-            if( i == arr.length-1 && arr[i -1] == "a"){
-                arr[i] = "b";
-            }else if( i == arr.length-1 && arr[i -1] != "a"){
-                arr[i] = "a";
+            if( arr[i] == arr.length-1 && arr[arr.length-2] == "b"){
+
+                ans += "a";
+            }else if( arr[i] == arr.length-1 && arr[arr.length-2] == "a"){
+              ans += "b";
             }
+
+
+
 
         }
 
