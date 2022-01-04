@@ -1,9 +1,4 @@
 function tileOfT(R, H){
-
-    // console.log(R, H);
-
-    
-
     let toS = R.toString();
 
     // console.log(toS);
