@@ -1,25 +1,47 @@
 function tileOfT(R, H){
+
+  var arr = []
+
+
+  while(R < H){
+
+    arr.push(H);
+
+    for(var i = 0; i< arr.length; i++){
+
+      if( arr[i] == R){
+      return R;
+
+      }
+    }
+    
     let toS = R.toString();
 
-    // console.log(toS);
+    let toS1 = H.toString();
+
     let s = 0;
+
+    let s1 = 0;
 
     for(var i = 0; i < toS.length; i++){
 
         s += (+toS[i]);
 
     }
-    // console.log(s)
 
-    if( (R + s) < H){
-      return  tileOfT( (R + s), H);
-    }
-     if((R + s) == H){
-        return (R+s);
-    }else{
-        return -1;
-    }
+    for(var i = 0; i < toS1.length; i++){
+
+      s1 += (+toS1[i]);
+
+    } 
+
     
+      return  tileOfT( (R + s), (H + s1));
+    
+    
+  }
+
+  return -1;
 
 }
 

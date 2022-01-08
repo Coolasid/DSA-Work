@@ -1,28 +1,36 @@
-function     stealMuch(C, N, valueArr, weightArr){
+function GCD(a, b){
 
-    // console.log(C, N, valueArr, weightArr);
+    if( b == 0){
+        return a;
+    }
+     return GCD(b, (a%b))
 
-    
 }
 
-
 function runProgram(input) {
-   var input = input.trim().split("\n");
+   var input = input.trim().split('\n');
 
-   var C = +input[0];
-   var N = +input[1];
+   var testCases = +input[0];
 
-   var valueArr = input[2].trim().split(" ").map(Number);
-   var weightArr = input[3].trim().split(' ').map(Number);
+   var line = 1
 
-    stealMuch(C, N, valueArr, weightArr);
+   for(var i = 0; i < testCases; i++){
+
+        var [a, b] = input[line].trim().split(" ").map(Number);
+        line++;
+
+        
+      console.log(  GCD(a, b));
+
+        
+
+   }
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`50 
-3
-60 100 120 
-10 20 30`);
+    runProgram(`2
+6 9
+2 25`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

@@ -1,28 +1,44 @@
-function     stealMuch(C, N, valueArr, weightArr){
+function    angryPeople(N, arr){
+    // console.log(N, arr);
+    arr.sort((a,b)=>{return a-b});
 
-    // console.log(C, N, valueArr, weightArr);
+    for(var i = 1; i < N; i+=2){
 
+      arr.unshift( +arr.splice(i, 1).join(""))
+
+    }
+
+    let ans = 0;
+    for(var i = 0; i < N; i++){
+
+      let value = Math.abs(arr[i]-arr[i+1%N]);
+
+      if( ans < value){
+        ans = value;
+      }
+
+    }
+    console.log(ans);
     
 }
+
 
 
 function runProgram(input) {
    var input = input.trim().split("\n");
 
-   var C = +input[0];
-   var N = +input[1];
+   var N = +input[0];
 
-   var valueArr = input[2].trim().split(" ").map(Number);
-   var weightArr = input[3].trim().split(' ').map(Number);
+   var arr = input[1].trim().split(' ').map(Number);
 
-    stealMuch(C, N, valueArr, weightArr);
+
+
+   angryPeople(N, arr);
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`50 
-3
-60 100 120 
-10 20 30`);
+    runProgram(`4
+5 10 6 8`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
