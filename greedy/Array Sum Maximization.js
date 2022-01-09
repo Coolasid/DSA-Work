@@ -1,39 +1,28 @@
- function      arrSumMax(N,arr){
+
+ 
+ function   arrSumMax(N,arr){
     //  console.log(N, arr);
 
-    var ansArr = [];
+   arr.sort((a,b)=>{return a-b});
+   
+   let prev = -Infinity;
 
-    for(var i = 0; i < N; i++){
-        let newArr = [];
-        for(var j = 0; j < N; j++){
+   let prevSum = 0;
 
-            if( j != i && arr[j] < arr[i]){
+   for(var i = 0; i < N; i++){
 
-                let small =  arr[j] * (-1);
+      let sum = (arr[i] * (N-i)) - (prevSum);
 
-                    newArr.push(small)
+      if( sum > prev){
+        prev = sum;
+      }
 
-            }else if( j != i && arr[j] > arr[i]){
+      prevSum += arr[i]
 
-                let big = arr[i];
-                newArr.push(big)
-            }else{
-                newArr.push(arr[i]);
-            }
+   }
 
-        }
+   console.log(prev);
 
-        // console.log(newArr);
-        
-        ansArr.push( newArr.reduce((a, b) => {return a+b}));
-
-    }
-
-    // console.log(ansArr);
-
-    ansArr.sort((a,b)=>{return b-a});
-
-    console.log(ansArr[0])
 
  }
 

@@ -3,21 +3,22 @@ function    noddyE(N, X, arr){
     // console.log(N, X, arr);
     
     var count = 0;
+    var K = 0;
+
     for(var i = 0; i < N; i++){
 
-        if( arr[i] <= X){
-            count++;
-        }else{
+      if( arr[i] <= X){
+        count++;
+      }
 
-            if( arr[i+1] <= X){
-                count++;
-            }else{
-                count = 0;
-            }
-
-        }
+      if( arr[i] > X && K < 1 ){
+        K++;
+      }else if( arr[i] > X && K >= 1){
+        break;
+      }
 
     }
+    
 
     console.log(count);
 
