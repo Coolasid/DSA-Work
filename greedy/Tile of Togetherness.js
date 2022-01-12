@@ -1,24 +1,25 @@
-function tileOfT(R, H){
-
-  var arr = []
-
-
-  while(R < H){
-
-    arr.push(H);
-
-    for(var i = 0; i< arr.length; i++){
+function tileOfT(R, H, arr){
+arr.push(H);
+  for(var i = 0; i< arr.length; i++){
 
       if( arr[i] == R){
       return R;
 
       }
     }
+
+    if( R > H){
+      return -1;
+    }
+    
+    // console.log(arr);
+
+    
     
     let toS = R.toString();
 
     let toS1 = H.toString();
-
+ 
     let s = 0;
 
     let s1 = 0;
@@ -36,14 +37,14 @@ function tileOfT(R, H){
     } 
 
     
-      return  tileOfT( (R + s), (H + s1));
+      return  tileOfT( (R + s), (H + s1), arr);
     
     
   }
 
-  return -1;
+  
 
-}
+
 
 
 function runProgram(input) {
@@ -58,12 +59,14 @@ function runProgram(input) {
         R = B;
         H = A;
     }
+    
+    var arr = []
 
-   console.log( tileOfT(R, H));
+   console.log( tileOfT(R, H, arr));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`32 47`);
+    runProgram(`45069 89672`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
