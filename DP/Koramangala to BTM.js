@@ -1,55 +1,36 @@
+function BTM(N, arr){
 
+    // console.log(N, arr);
+let count = 0;
+    for(let i = 0; i < N; i++){
 
-function fib(N, dp){
-
-    if(dp[N] != -1){
-        return dp[N];
-    }else{
-        var x = fib(N-1, dp);
-        var y = fib(N-2, dp);
+        i += arr[i]-1
+        count++;
+        if( i > N){
+            return 0;
+        }
+        if(i == N){
+            return count;
+        }
 
     }
-    
-    dp[N] = x + y;
-    // console.log(dp)
 
-    return dp[N];
-   
+    
 
 }
 
 
 function runProgram(input) {
-   var N = +input;
+   var input = input.trim().split('\n');
 
-
-    function array(N){
-
-        var dp = [];
-
-        for(let i = 0; i <= N; i++){
-
-            dp[i] = -1;
-
-        }
-
-        dp[0] = 0;
-        dp[1] = 1;
-
-        // console.log(dp);
-
-        return dp;
-    
-    }
-
-  let arr =  array(N)
-//   console.log(arr);
-
- console.log( fib(N, arr));
+   var N = +input[0];
+   var arr = input[1].trim().split(' ').map(Number)
    
+  console.log(  BTM(N, arr));
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`5`);
+    runProgram(`11
+1 3 5 8 9 2 6 7 6 8 9`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

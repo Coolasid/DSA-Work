@@ -1,20 +1,24 @@
 
 
-function fib(N, dp){
+function diffWays(N, dp){
 
+    // console.log(dp);
+    if(N < 0){
+        return 0;
+    }
     if(dp[N] != -1){
         return dp[N];
     }else{
-        var x = fib(N-1, dp);
-        var y = fib(N-2, dp);
+        let X =  diffWays(N-1, dp);
+        let Y = diffWays(N-2, dp);
+        let Z = diffWays(N-3, dp)
 
+
+        dp[N] = X + Y  + Z ;
     }
     
-    dp[N] = x + y;
-    // console.log(dp)
 
     return dp[N];
-   
 
 }
 
@@ -25,31 +29,30 @@ function runProgram(input) {
 
     function array(N){
 
-        var dp = [];
+    var dp = [];
 
-        for(let i = 0; i <= N; i++){
+    for(let i = 0; i <= N; i++){
 
-            dp[i] = -1;
+        dp[i] = -1;
 
-        }
-
-        dp[0] = 0;
-        dp[1] = 1;
-
-        // console.log(dp);
-
-        return dp;
-    
     }
+
+    dp[0] = 1;
+
+    // console.log(dp);
+
+    return dp;
+    
+}
 
   let arr =  array(N)
 //   console.log(arr);
 
- console.log( fib(N, arr));
+ console.log( diffWays(N, arr));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`5`);
+    runProgram(`4`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

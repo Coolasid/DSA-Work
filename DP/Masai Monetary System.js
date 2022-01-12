@@ -1,55 +1,39 @@
+function masaiM(N){
 
-
-function fib(N, dp){
-
-    if(dp[N] != -1){
-        return dp[N];
-    }else{
-        var x = fib(N-1, dp);
-        var y = fib(N-2, dp);
-
-    }
+    // return N;
     
-    dp[N] = x + y;
-    // console.log(dp)
+    if(Math.floor(N) == 0){
+        return 1;
+    }
 
-    return dp[N];
-   
+    return masaiM(Math.floor(N/2)) + masaiM( Math.floor(N/3)) + masaiM( Math.floor(N/4));
 
 }
 
 
 function runProgram(input) {
-   var N = +input;
+   var input = input.trim().split('\n');
+
+    var line = 0;
+    // console.log(input.length);
+
+    for(let i = 0; i < input.length; i++){
+
+        let N = +input[line];
+
+        line++;
+
+        console.log(masaiM(N));
 
 
-    function array(N){
-
-        var dp = [];
-
-        for(let i = 0; i <= N; i++){
-
-            dp[i] = -1;
-
-        }
-
-        dp[0] = 0;
-        dp[1] = 1;
-
-        // console.log(dp);
-
-        return dp;
-    
     }
 
-  let arr =  array(N)
-//   console.log(arr);
 
- console.log( fib(N, arr));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`5`);
+    runProgram(`12
+2`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
