@@ -1,31 +1,21 @@
-function    heightT(N, arr){
+function    heightT(N, arr, dp){
 
 
-    // console.log(N, arr)j
-    let arr1 = [];
-    let arr2 = [];
+  for(let i = 1; i < N; i++){
+
     
+    for(let j = 0; j < i; j++){
 
-    // console.log(dArr);c
-
-
-    let max1 = -Infinity;
-    let max2 = -Infinity;
-
-    for(let i = 0; i < N; i++){
-
-        if( arr[i] > max1){
-            arr1.push(arr[i]);
-            max1 = arr[i];
-            
-        }
+      if(arr[i] > arr[j]){
+        
+        dp[i] = Math.max(dp[i], dp[j]+1)
+      }
 
     }
 
-    // console.log(arr1);
-
-    console.log(arr1.length);
-    
+  }
+ 
+   return Math.max(...dp) 
 
 }
 
@@ -34,9 +24,18 @@ function runProgram(input) {
 
    var N = +input[0];
 
+   var dp = [];
+
+   for(let i = 0; i < N; i++){
+
+    dp[i] = 1;
+
+   }
+  //  console.log(dp);
+
    var arr = input[1].trim().split(" ").map(Number);
 
-   heightT(N, arr);
+  console.log( heightT(N, arr, dp));
    
   }
   if (process.env.USERNAME === "siddhesh") {

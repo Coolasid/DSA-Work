@@ -1,32 +1,47 @@
-function compN(N, arr){
-    var count = 0;
-    for(var i = 0; i < N; i++){
-      
-        if(i == 0 && arr[i] > arr[i+1]){
-          count++;
-        }
-        if(i == N-1 && arr[N-1] > arr[i-1]){
-          count++;
-        }else if(arr[i] > arr[i-1] && arr[i] > arr[i+1]){
-            count++;
-        }
+function    heightT(N, arr, dp, curr){
+
+  if( curr > N-1){
+    return;
+  }
+
+    for(var i = 0; i < curr; i++){
+
+      if(arr[curr] > arr[i]){
+
+        dp[curr] = Math.max(dp[curr], dp[i]+1);
+
+      }
+
     }
 
-    console.log(count);
+    return heightT(N, arr, dp, curr+1)
 }
 
-
 function runProgram(input) {
-   var input = input.trim().split("\n");
+   var input = input.trim().split('\n');
+
    var N = +input[0];
+
+   var dp = [];
+
+   for(let i = 0; i < N; i++){
+
+    dp[i] = 1;
+
+   }
+  //  console.log(dp);
+
    var arr = input[1].trim().split(" ").map(Number);
-   
-   compN(N,arr);
+   var curr = 1
+
+   heightT(N, arr, dp, curr);
+
+   console.log(Math.max(...dp));
    
   }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`8
-1 2 3 4 2 1 6 5`);
+    runProgram(`9
+10 22 9 33 21 50 41 60 80`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
