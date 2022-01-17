@@ -1,21 +1,42 @@
 function BTM(N, arr){
 
     // console.log(N, arr);
-let count = 0;
-    for(let i = 0; i < N; i++){
 
-        i += arr[i]-1
-        count++;
-        if( i > N){
-            return 0;
+    let max = arr[0];
+    let step = arr[0];
+    let countJ = 1;
+
+    if( N == 1){
+      return 0;
+    }else if( arr[0] == 0){
+      return -1;
+    }else{
+
+      for(let i = 1; i < N; i++){
+
+        if(i == N-1){
+
+          return countJ;
+
         }
-        if(i == N){
-            return count;
+        max = Math.max(max, i+arr[i]);
+        step--;
+        if(step == 0){
+
+          countJ++;
+          if(i >= max){
+
+            return -1;
+
+          }
+          step = max - i;
+
         }
+
+      }
+      
 
     }
-
-    
 
 }
 

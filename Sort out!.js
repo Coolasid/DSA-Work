@@ -1,38 +1,36 @@
-function sO(arr, low, high, mid){
-
-
-
-}
-
-
-
-function sortOut(arr,low, high){
-
-    if( low >= high ){
-      return;
-    }
-
-    var mid = Math.floor((low/high)/2);
-
-    sortOut(arr, low, mid);
-    sortOut(arr, mid+1, high);
-    sO(arr, low, high, mid);
-  
- 
-
-}
-
-
 
 function runProgram(input) {
     
     var input = input.split("\n");
     var N = +input[0];
     var arr = input[1].split(" ").map(Number); 
-    var low = 0;
-    var high = N-1;
 
-        sortOut(arr,low,high);
+    let ans = [];
+    for(var i = 0; i < N; i++){
+
+      ans.push(i)
+
+    }
+    
+    for(var i = 0; i < N-1;i++){
+
+      for(var j = 0; j < N -i -1; j++){
+
+        if( arr[j] > arr[j+1]){
+          let temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+
+          let flag = ans[j];
+          ans[j] = ans[j+1];
+          ans[j+1] = flag;
+        }
+
+      }
+
+    }
+
+    console.log(ans.join(" "));
    
   }
   if (process.env.USERNAME === "siddhesh") {
