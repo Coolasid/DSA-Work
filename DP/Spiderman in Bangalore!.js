@@ -1,46 +1,35 @@
-function    heightT(N, arr, dp){
+function     spiderMan(N, K, arr){
 
+    let sum = 0;
+    for(let i = 0; i < N; i++){
 
-  for(let i = 1; i < N; i++){
-
-    
-    for(let j = 0; j < i; j++){
-
-      if(arr[i] > arr[j]){
+        if( K > 0){
+        i += arr[i] - 10;
+        K--;
+        sum += Math.abs(arr[i] - arr[i + (arr[i]-10) % N]);
+        }
         
-        dp[i] = Math.max(dp[i], dp[j]+1)
-      }
- 
+
     }
 
-  }
- 
-   return Math.max(...dp) 
+    console.log(sum);
 
 }
 
+
 function runProgram(input) {
-   var input = input.trim().split('\n');
+   var input = input.trim().split("\n");
 
-   var N = +input[0];
-
-   var dp = [];
-
-   for(let i = 0; i < N; i++){
-
-    dp[i] = 1;
-
-   }
-  //  console.log(dp);
+   var [N, K] = input[0].trim().split(" ").map(Number);
 
    var arr = input[1].trim().split(" ").map(Number);
 
-  console.log( heightT(N, arr, dp));
+    spiderMan(N, K, arr)
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`9
-10 22 9 33 21 50 41 60 80`);
+    runProgram(`5 3
+10 30 40 50 20`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

@@ -1,46 +1,33 @@
-function    heightT(N, arr, dp){
+function    masaiAir(N, bagArr, handArr){
 
+    // console.log(N, bagArr, handArr);
 
-  for(let i = 1; i < N; i++){
+    for(let i = 0; i < N; i++){
 
-    
-    for(let j = 0; j < i; j++){
+        if( bagArr[i] > 15 || handArr[i] > 7){
+            console.log("Stop");
+        }else{
+            console.log("Boarding");
+        }
 
-      if(arr[i] > arr[j]){
-        
-        dp[i] = Math.max(dp[i], dp[j]+1)
-      }
- 
     }
-
-  }
- 
-   return Math.max(...dp) 
 
 }
 
 function runProgram(input) {
-   var input = input.trim().split('\n');
+   var input = input.trim().split("\n");
 
    var N = +input[0];
+   var bagArr = input[1].trim().split(" ").map(Number);
+   var handArr = input[2].trim().split(" ").map(Number);
 
-   var dp = [];
+   masaiAir(N, bagArr, handArr);
 
-   for(let i = 0; i < N; i++){
-
-    dp[i] = 1;
-
-   }
-  //  console.log(dp);
-
-   var arr = input[1].trim().split(" ").map(Number);
-
-  console.log( heightT(N, arr, dp));
-   
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`9
-10 22 9 33 21 50 41 60 80`);
+    runProgram(`4
+12 14 15 6
+8 5 7 4`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

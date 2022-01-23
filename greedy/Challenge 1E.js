@@ -11,7 +11,7 @@ function     challenge(N, arrN, M, arrM){
 
     for(var i = 0; i < N; i++){
 
-        if( arrN[i] < max){
+        if( arrN[i] <= max){
             sum += ((max+1) - arrN[i]);
         }
 

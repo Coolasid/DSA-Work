@@ -1,6 +1,6 @@
 
 var arrW = [];
-function masaiways2(arr, N, K,curr){
+function masaiways2(arr, N, K,curr,){
   if (K < 0) {
     return;
   }
@@ -39,8 +39,8 @@ function runProgram(input) {
 
 }
   if (process.env.USERNAME === "siddhesh") {
-      runProgram(`3 3
-1 2 3`);
+      runProgram(`39 3
+8 10 2`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
