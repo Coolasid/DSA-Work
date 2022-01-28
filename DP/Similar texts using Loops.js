@@ -1,32 +1,39 @@
 
 
-function   simText( arr1, idx1,  arr2, idx2, dp){
+// function   simText( arr1, idx1,  arr2, idx2, dp){
 
-    // console.log( arr1, idx1,  arr2, idx2, dp);
+//     // console.log( arr1, idx1,  arr2, idx2, dp);
+
+    
+
+//   if( idx1 == 0 || idx2 == 0){
+//         return dp[idx1][idx2] = 0;
+//     }
+    
+//     if(dp[idx1][idx2] != -1){
+//       return dp[idx1][idx2];  
+//     }else{
+
+//       if( arr1[idx1-1] == arr2[idx2-1]){
+//         return dp[idx1][idx2] = 1 + simText(arr1, idx1-1, arr2, idx2-1, dp);
+//       }else{
+
+//         let opt1 = simText(arr1, idx1-1, arr2, idx2, dp);
+//         let opt2 = simText(arr1, idx1, arr2, idx2-1, dp);
+
+//         return dp[idx1][idx2] = Math.max(opt1, opt2);
+//       }
+
+//     }
 
     
 
-  if( idx1 == 0 || idx2 == 0){
-        return dp[idx1][idx2] = 0;
-    }
-    
-    if(dp[idx1][idx2] != -1){
-      return dp[idx1][idx2];  
-    }else{
+// }
 
-      if( arr1[idx1-1] == arr2[idx2-1]){
-        return dp[idx1][idx2] = 1 + simText(arr1, idx1-1, arr2, idx2-1, dp);
-      }else{
 
-        let opt1 = simText(arr1, idx1-1, arr2, idx2, dp);
-        let opt2 = simText(arr1, idx1, arr2, idx2-1, dp);
+function lcs(arr1, arr2, N, M, dp){
 
-        return dp[idx1][idx2] = Math.max(opt1, opt2);
-      }
-
-    }
-
-    
+  
 
 }
 
@@ -57,10 +64,11 @@ function runProgram(input) {
 
   //  console.log(dp);
 
+   lcs(arr1, arr2, N, M, dp);
  
- console.log(simText(arr1, N, arr2, M, dp));  //for REC
+//  console.log(simText(arr1, N, arr2, M, dp));  //for REC
 
- console.log(dp);
+//  console.log(dp);
    
   }
   if (process.env.USERNAME === "siddhesh") {
