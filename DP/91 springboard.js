@@ -2,25 +2,7 @@ function nineOneBoard(arr, dp, N, M){
 
   // console.log(arr);
 
-  for(let i = 0; i < N; i++){
-
-    for(let j = 0; j < M; j++){
-
-      dp[0][0] = arr[0][0]
-
-      if(j >= 1 && i == 0){
-        dp[i][j] = dp[i][j-1] + arr[i][j] 
-      }
-
-      if(i >= 1 && j == 0){
-        dp[i][j] = dp[i-1][j] + arr[i][j]
-      }
-
-    }
-
-  }
-
-  console.log(dp);
+ 
 
 }
 

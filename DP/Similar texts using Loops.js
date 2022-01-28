@@ -1,41 +1,25 @@
 
 
-// function   simText( arr1, idx1,  arr2, idx2, dp){
-
-//     // console.log( arr1, idx1,  arr2, idx2, dp);
-
-    
-
-//   if( idx1 == 0 || idx2 == 0){
-//         return dp[idx1][idx2] = 0;
-//     }
-    
-//     if(dp[idx1][idx2] != -1){
-//       return dp[idx1][idx2];  
-//     }else{
-
-//       if( arr1[idx1-1] == arr2[idx2-1]){
-//         return dp[idx1][idx2] = 1 + simText(arr1, idx1-1, arr2, idx2-1, dp);
-//       }else{
-
-//         let opt1 = simText(arr1, idx1-1, arr2, idx2, dp);
-//         let opt2 = simText(arr1, idx1, arr2, idx2-1, dp);
-
-//         return dp[idx1][idx2] = Math.max(opt1, opt2);
-//       }
-
-//     }
-
-    
-
-// }
-
 
 function lcs(arr1, arr2, N, M, dp){
 
+    for(var i = 0; i <= N; i++){
+        for(var j = 0; j <= M; j++){
+
+            if(i == 0 || j == 0){
+                dp[i][j] = 0;
+            }
+            else if (arr1[i-1] == arr2[j-1]){
+                dp[i][j] = dp[i-1][j-1] + 1;
+            }else{
+                dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1])
+            }
+
+        }
+    }
   
 
-}
+}  
 
 
 function runProgram(input) {
@@ -52,9 +36,9 @@ function runProgram(input) {
 
    let dp = [];
 
-   for(let i = 0; i < M+1; i++){
+   for(let i = 0; i < N+1; i++){
       dp[i] = [];
-    for(let j = 0; j < N+1; j++){
+    for(let j = 0; j < M+1; j++){
 
         dp[i][j] = -1;
 
@@ -62,18 +46,17 @@ function runProgram(input) {
 
    }
 
-  //  console.log(dp);
+//    console.log(dp);
 
    lcs(arr1, arr2, N, M, dp);
  
-//  console.log(simText(arr1, N, arr2, M, dp));  //for REC
-
-//  console.log(dp);
+// console.log(dp);
+ console.log(dp[N][M]);
    
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`AEDFHR
-ABCDGH`);
+    runProgram(`ghajf
+mnmaqq`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
