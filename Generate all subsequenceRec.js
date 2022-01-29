@@ -32,8 +32,8 @@ function runProgram(input) {
    allSub(str,newStr,curr);
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`4
-abcd`);
+    runProgram(`9
+    123456789`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
