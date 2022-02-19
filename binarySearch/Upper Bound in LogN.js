@@ -1,36 +1,29 @@
 function upperBound(N, K, arr) {
-
-
-
     // console.log(N, K, arr);
+    let low = 1;
 
-    let arr1 = [];
-
-    let low = 0;
-
-    let high = N - 1;
+    let high = N ;
 
     let ans = -1;
 
-    while (low <= high) {
+    while (high-low > 1) {
 
-        let mid = Math.floor((low + (high - low) / 2));
+        let mid = Math.floor( (high - low) / 2);
 
-
-
-        if (arr[mid] > K) {
-            arr1.push(mid);
-            high = mid - 1;
+        if (arr[mid] <= K) {
+            
+            low = mid + 1;
 
         } else {
-            low = mid + 1;
+            ans = mid
+            high = mid - 1;
         }
 
     }
 
     // console.log(arr1);
 
-    console.log(Math.min(...arr1));
+    return ans;
 
 }
 
@@ -42,11 +35,11 @@ function runProgram(input) {
 
     var arr = input[1].trim().split(" ").map(Number);
 
-
     var N = +arr1[0];
     var K = +arr1[1];
+    // console.log("sid");
 
-    upperBound(N, K, arr);
+  console.log(  upperBound(N, K, arr));
 }
 if (process.env.USERNAME === "siddhesh") {
     runProgram(`10 3
