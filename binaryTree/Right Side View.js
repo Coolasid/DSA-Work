@@ -36,3 +36,28 @@ var rightSideView = function(root) {
     // console.log(arr);
     return arr;
 }
+
+
+
+ let level = 0;
+    let arr = [];
+    
+    function left(root, level){
+        
+        if(root === null){
+            return;
+        }
+        
+        if(arr[level] === undefined){
+            arr.push(root.val)
+        }
+        
+        left(root.left, level+1);
+        left(root.right, level+1);
+    }
+    
+    left(root, level)
+    
+    
+    return arr;
+    
