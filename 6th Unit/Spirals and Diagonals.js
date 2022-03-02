@@ -2,6 +2,9 @@ function diagonalSum(N, arr){
 
 
     // console.log(N, arr);
+    if(N == 1){
+        return console.log(arr[0]);
+    }
 
     let mat = new Array(N);
 
@@ -14,13 +17,68 @@ function diagonalSum(N, arr){
 
     let left = 0
     let right = N-1;
-    let up = 0;
-    let down = N-1;
+    let top = 0;
+    let bottom = N-1;
+    let count = 0;
 
 
-    // while( )
+    while( count < N*N ){
+
+        for(let i = left; i <= right && count < N*N; i++){
+            mat[top][i] = arr[count];
+            count++;
+        }
+        top++;
+
+        for(let i = top ; i <= bottom && count < N*N; i++){
+            mat[i][right] = arr[count];
+            count++;
+        }
+        right--;
+
+        for(let i = right; i >= left && count < N*N; i--){
+            mat[bottom][i] = arr[count]
+            count++;
+        }
+        bottom--;
+
+        for(let i = bottom; i >= top && count < N*N; i--){
+            mat[i][left] = arr[count];
+            count++;
+        }
+        left++;
+
+    }
 
 
+    // console.log(mat);
+    let d1 = [];
+    let d2 = [];
+
+    for(let i = 0; i < N; i++){
+        d1.push(mat[i][i]);
+        d2.push(mat[i][N-i-1]);
+    }
+    
+    // console.log(d1, d2);
+
+//   console.log(sum1 + sum2);
+
+    if(N %2 == 0){
+        
+
+  let sum1 =  d1.reduce((a, b) => a+b)
+  let sum2 =  d2.reduce((a, b) => a+b)
+        console.log(sum1 + sum2);
+    }else{
+        let r = Math.floor(N/2)
+        d2[r] = 0;
+        
+
+  let sum1 =  d1.reduce((a, b) => a+b)
+  let sum2 =  d2.reduce((a, b) => a+b)
+        console.log(sum1 + sum2);
+    }
 
 
 }
