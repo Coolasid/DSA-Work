@@ -14,7 +14,7 @@ function upperBound(N, K, arr) {
        }
     }
     
-    return low
+    return low;
 }
 
 

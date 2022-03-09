@@ -32,8 +32,8 @@ function runProgram(input) {
     console.log(lowerBound(N, K, arr));
 }
 if (process.env.USERNAME === "siddhesh") {
-    runProgram(`5 3
-1 1 2 2 5`);
+    runProgram(`6 1
+1 1 1 2 2 2`);
 } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");

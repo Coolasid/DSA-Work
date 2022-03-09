@@ -4,13 +4,44 @@ function bS(N, arr, K){
 
     function upperBound(arr, N, K){
 
+        let low = 0;
+        let high = N-1;
+
+        while(low < high){
+            let mid = Math.floor((low+high)/2);
+
+            if(K < arr[mid]){
+                high = mid
+            }else{
+                low = mid + 1;
+            }
+        }
+        return low;
     }
 
     function lowerBound(arr, N, K){
 
+        let low = 0;
+        let high = N -1;
+
+        while(low < high){
+            let mid = Math.floor((low+high)/2);
+
+            if(K <= arr[mid]){
+                high = mid
+            }else{
+                low = mid + 1;
+            }
+        }
+
+        return low 
     }
 
-    
+    console.log(
+      lowerBound(arr, N, K),
+      upperBound(arr, N, K),
+      upperBound(arr, N, K) - lowerBound(arr, N, K) +1
+    );
 
 }
 
@@ -25,9 +56,9 @@ function runProgram(input) {
 
   }
   if (process.env.USERNAME === "siddhesh") {
-    runProgram(`6
-1 1 1 2 2 2	
-1`);
+    runProgram(`5
+1 2 3 4 5
+5`);
   } else {
     process.stdin.resume();
     process.stdin.setEncoding("ascii");
