@@ -2,7 +2,6 @@ function merge(arr, low, high, mid) {
   var left = [];
   var right = [];
 
-
   for (var i = low; i <= mid; i++) {
     left.push(arr[i]);
   }
@@ -10,8 +9,6 @@ function merge(arr, low, high, mid) {
   for (var i = mid + 1; i <= high; i++) {
     right.push(arr[i]);
   }
-
-
 
   var I = 0;
   var J = 0;
@@ -42,9 +39,7 @@ function merge(arr, low, high, mid) {
   //    console.log(arr);
 }
 
-
 function mergeSort(arr, low, high) {
-
   // return high
 
   if (low >= high) {
@@ -56,42 +51,36 @@ function mergeSort(arr, low, high) {
   mergeSort(arr, low, mid);
   mergeSort(arr, mid + 1, high);
   merge(arr, low, high, mid);
-
-
-
 }
 
-
-
 function runProgram(input) {
-  var input = input.trim().split("\n");
+  var input = input.trim().split('\n');
   var N = +input[0];
-  var arr = input[1].trim().split(" ").map(Number);
+  var arr = input[1].trim().split(' ').map(Number);
 
   var low = 0;
   var high = N - 1;
 
   mergeSort(arr, low, high);
-  console.log(arr.join(" "));
-
+  console.log(arr.join(' '));
 }
-if (process.env.USERNAME === "siddhesh") {
+if (process.env.USERNAME === 'siddhesh') {
   runProgram(`5
 3 5 0 9 8`);
 } else {
   process.stdin.resume();
-  process.stdin.setEncoding("ascii");
-  let read = "";
-  process.stdin.on("data", function (input) {
+  process.stdin.setEncoding('ascii');
+  let read = '';
+  process.stdin.on('data', function (input) {
     read += input;
   });
-  process.stdin.on("end", function () {
-    read = read.replace(/\n$/, "");
-    read = read.replace(/\n$/, "");
+  process.stdin.on('end', function () {
+    read = read.replace(/\n$/, '');
+    read = read.replace(/\n$/, '');
     runProgram(read);
   });
-  process.on("SIGINT", function () {
-    read = read.replace(/\n$/, "");
+  process.on('SIGINT', function () {
+    read = read.replace(/\n$/, '');
     runProgram(read);
     process.exit(0);
   });
